@@ -1,2 +1,2 @@
-# Skillqiz
+# Skillquiz
  
