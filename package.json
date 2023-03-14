@@ -7,13 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest --dom"
   },
   "dependencies": {
+    "happy-dom": "^8.9.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/test-utils": "^2.3.1",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7",
