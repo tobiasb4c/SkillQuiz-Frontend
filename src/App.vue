@@ -1,17 +1,23 @@
 <script>
 
 import Beenden from './components/Beenden.vue'
+import Frage from './components/Frage.vue';
 
-export default{
+
+export default  {
     components: {
-        Beenden
+        Beenden,
+        Frage
+    },
+    data() {
+    return {
     }
+  }
 }
-
 </script>
 
 <template>
-
+<Frage text="Hallo Test Frage" class="w-full"/>
 <Beenden/>
 
 
