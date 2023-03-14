@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest --dom"
+    "test:unit": "vitest run --environment happy-dom",
+    "test:coverage": "vitest run --environment happy-dom --coverage",
+    "test:ui": "vitest --environment happy-dom --coverage --ui"
   },
   "dependencies": {
     "happy-dom": "^8.9.0",
@@ -15,6 +17,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "@vitest/coverage-c8": "^0.29.2",
+    "@vitest/ui": "^0.29.2",
     "@vue/test-utils": "^2.3.1",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",

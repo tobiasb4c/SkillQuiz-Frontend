@@ -6,7 +6,12 @@ export default {
             /*
             Quiz wird beendet
             */
-           console.log('Beendet')
+           this.submitted = true
+        }
+    },
+    data()  {
+        return  {
+            submitted: false
         }
     }
 }
