@@ -7,10 +7,10 @@ export default{
     data(){
         return{
             testAntworten: [
-                'Antwort 1',
-                'Antwort 2',
-                'Antwort 3',
-                'Antwort 4'
+                '1.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
+                '2.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
+                '3.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
+                '4.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam'
             ]
         }
     }
