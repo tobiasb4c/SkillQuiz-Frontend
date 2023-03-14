@@ -26,7 +26,6 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 button {
-
     background-color: #2FB4BC;
     border-radius: 3px;
 }
