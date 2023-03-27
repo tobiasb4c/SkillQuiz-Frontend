@@ -5,10 +5,11 @@ import { onMounted } from 'vue';
 export default {
     data() {
         return {
-            minute: this.$props.minute,
-            second: this.$props.second,
-            time: parseInt(this.minute * 60) + parseInt(this.second),
-            showButton: true
+            minuteCountdown: this.$props.minute,
+            secondCountdown: this.$props.second,
+            time: '',
+            showButton: true,
+            counter: ''
         }
     },
     props: {
@@ -17,23 +18,29 @@ export default {
     },
     methods: {
         startTimer() {
+
+            this.time = parseInt(this.minuteCountdown * 60) + parseInt(this.secondCountdown)
+
             this.showButton = false
-            setInterval(this.countDown, 1000)
+            this.counter = setInterval(this.countDown, 1000)
         },
 
         countDown() {
-            
-            this.minute = Math.floor(this.time / 60)
-            this.second = this.time % 60
 
-            this.time = this.time - 1
+            if (!this.showButton) {
 
-            
-            console.log(this.time)
+                this.time = this.time - 1
+
+                this.minuteCountdown = Math.floor(this.time / 60)
+                this.secondCountdown = this.time % 60
+
+                //console.log(this.time)
+            }
 
             if (this.time == 0) {
                 console.log("Beendet")
                 this.showButton = true
+                clearInterval(this.counter)
             }
         }
     }
@@ -46,7 +53,7 @@ export default {
 <template>
     <div class="flex flex-col items-center m-10">
         <p class="mt-2">Time until exam closes</p>
-        <p class="mb-2"> {{ this.minute }} Minutes {{ this.second }} Seconds</p>
+        <p class="mb-2"> {{ this.minuteCountdown }} Minutes {{ this.secondCountdown }} Seconds</p>
         <button @click="startTimer" v-show="showButton">Start</button>
     </div>
 </template>
