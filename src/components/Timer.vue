@@ -5,8 +5,9 @@ import { onMounted } from 'vue';
 export default {
     data() {
         return {
-            minute: this.minute,
-            second: this.second,
+            minute: this.$props.minute,
+            second: this.$props.second,
+            time: parseInt(this.minute * 60) + parseInt(this.second)
         }
     },
     props: {
@@ -15,21 +16,23 @@ export default {
     },
     methods: {
         startTimer() {
-            console.log("w")
-            this.second = 20
-            /*setInterval(function(){
-                
-                this.second--
+            setInterval(this.countDown, 1000)
+            second = 1
+        },
 
-                if(this.second == 0){
-                    this.minute--
-                    this.second = 60
-                }
-                if(this.minute == 0 && this.second == 0){
-                    console.log("Beendet")
-                }
-            }, 1000)
-            */
+        countDown() {
+            
+            this.minute = Math.floor(this.time / 60)
+            this.second = this.time % 60
+
+            this.time = this.time - 1
+
+            console.log(this.second)
+            console.log(this.time)
+
+            if (this.time == 0) {
+                console.log("Beendet")
+            }
         }
     }
 }
