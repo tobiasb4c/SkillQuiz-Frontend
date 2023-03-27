@@ -7,7 +7,8 @@ export default {
         return {
             minute: this.$props.minute,
             second: this.$props.second,
-            time: parseInt(this.minute * 60) + parseInt(this.second)
+            time: parseInt(this.minute * 60) + parseInt(this.second),
+            buttonClicked: true
         }
     },
     props: {
@@ -16,8 +17,8 @@ export default {
     },
     methods: {
         startTimer() {
+            this.buttonClicked = false
             setInterval(this.countDown, 1000)
-            second = 1
         },
 
         countDown() {
@@ -27,11 +28,12 @@ export default {
 
             this.time = this.time - 1
 
-            console.log(this.second)
+            
             console.log(this.time)
 
             if (this.time == 0) {
                 console.log("Beendet")
+                this.buttonClicked = true
             }
         }
     }
@@ -45,7 +47,7 @@ export default {
     <div class="flex flex-col items-center m-10">
         <p class="mt-2">Time until exam closes</p>
         <p class="mb-2"> {{ this.minute }} Minutes {{ this.second }} Seconds</p>
-        <button @click="startTimer">Start</button>
+        <button @click="startTimer" v-show="buttonClicked">Start</button>
     </div>
 </template>
 
