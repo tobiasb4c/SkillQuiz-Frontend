@@ -1,12 +1,12 @@
 <script>
-import AntwortMoeglichkeiten from './components/AntwortMoeglichkeiten.vue'
-import Titel from './components/Titel.vue'
-import Timer from './components/Timer.vue';
-import Beenden from './components/Beenden.vue';
-import Frage from './components/Frage.vue';
-import Fragennummer from './components/Fragennummer.vue';
+import AntwortMoeglichkeiten from "./components/AntwortMoeglichkeiten.vue";
+import Titel from "./components/Titel.vue";
+import Timer from "./components/Timer.vue";
+import Beenden from "./components/Beenden.vue";
+import Frage from "./components/Frage.vue";
+import Fragennummer from "./components/Fragennummer.vue";
 
-export default  {
+export default {
     components: {
         Beenden,
         Frage,
@@ -15,25 +15,25 @@ export default  {
         Titel,
         AntwortMoeglichkeiten,
     },
-    data(){
-        return{
+    data() {
+        return {
             testAntworten: [
-                '1.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
-                '2.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
-                '3.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
-                '4.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam'
-            ]
-        }
-    }
-  }
+                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
+                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
+                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
+                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
+            ],
+        };
+    },
+};
 </script>
 
 <template>
-    <Titel titel="Hallo Welt" />
-    <Timer :propMinute="1" :propSecond="5"/>
-  <Fragennummer :propMax="10"/>    <AntwortMoeglichkeiten :antworten="testAntworten" />
+    <Titel titel="Titel" />
+    <Frage text="Fragentext"/>
+    <Fragennummer :propMax="10" />
+    <AntwortMoeglichkeiten :antworten="testAntworten" />
+    <Timer :propMinute="1" :propSecond="5" />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
