@@ -18,11 +18,7 @@ export default  {
 </script>
 
 <template>
-<Fragennummer max="10"/>
-<Frage text="Hallo Test Frage" class="w-full"/>
-<Beenden/>
-
-
+  <Fragennummer max="10"/>
 </template>
 
 <style scoped>
