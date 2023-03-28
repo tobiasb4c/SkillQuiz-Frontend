@@ -1,5 +1,4 @@
 <script>
-
 import Timer from './components/Timer.vue'
 
 export default{
@@ -11,7 +10,7 @@ export default{
 
 <template>
 
-    <Timer minute="11" second="23"/>
+    <Timer :propMinute="1" :propSecond="5"/>
 
 </template>
 
