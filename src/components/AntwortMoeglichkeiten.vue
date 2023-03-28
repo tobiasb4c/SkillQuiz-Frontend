@@ -8,35 +8,40 @@ export default {
 
 <template>
     <div class="flex flex-col items-center">
-        <div class="answer" v-for="antwort in antworten">
-            <label :for="antwort">{{ antwort }}</label>
+        <label v-for="antwort in antworten" class="answer flex flex-row justify-between items-center p-2">
+            <p class="w-11/12">{{ antwort }} </p>
             <input type="checkbox" class="accent-[#2FB4BC]" :value="antwort">
-        </div>
+        </label>
+
+        <!--div class="answer flex flex-row align-baseline" v-for="antwort in antworten">
+            
+        </div-->
     </div>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+.answer {
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    width: 90%;
+}
+
 label {
-    width: 341px;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
-    display: inline-block;
-    margin-left: 10px;
-    margin-top: 6px;
-    margin-bottom: 5px;
-    align-items: center;
     color: #232323;
 }
 
 input {
-    position: absolute;
     box-sizing: border-box;
-    margin-left: 149px;
     margin-top: 15px;
     margin-bottom: 15px;
     width: 20px;
@@ -45,14 +50,5 @@ input {
     border-radius: 5px;
 }
 
-.answer {
-    box-sizing: border-box;
-    height: 50px;
-    width: 537px;
-    margin-top: 0px;
-    margin-bottom: 10px;
-    background: #FFFFFF;
-    border: 1px solid #E0E0E0;
-    border-radius: 5px;
-}
+
 </style>

@@ -52,6 +52,7 @@ export default {
         <!--TEST-->
         <p>TEST BUTTONS</p>
         <button @click="simulateEmitIncrease">Increase Emit</button>
+        <br>    
         <button @click="simulateEmitDecrease">Decrease Emit</button>
     </div>
 </template>

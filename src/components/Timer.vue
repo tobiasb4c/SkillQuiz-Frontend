@@ -51,6 +51,7 @@ div {
     background-color: white;
     box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+    
 }
 
 p:last-child {

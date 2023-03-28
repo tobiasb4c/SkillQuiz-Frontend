@@ -18,7 +18,7 @@ export default {
     data() {
         return {
             testAntworten: [
-                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
+                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
                 "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
                 "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
                 "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
@@ -29,11 +29,14 @@ export default {
 </script>
 
 <template>
-    <Titel titel="Titel" />
-    <Frage text="Fragentext"/>
-    <Fragennummer :propMax="10" />
-    <AntwortMoeglichkeiten :antworten="testAntworten" />
-    <Timer :propMinute="1" :propSecond="5" />
+    <main >
+        <Titel titel="Titel" />
+        <Frage text="Fragentext"/>
+        <Fragennummer :propMax="10" />
+        <AntwortMoeglichkeiten :antworten="testAntworten" />
+        <Timer :propMinute="1" :propSecond="5" />
+    </main>
+
 </template>
 
 <style scoped>
