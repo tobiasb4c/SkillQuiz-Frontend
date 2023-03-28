@@ -1,8 +1,9 @@
 <script>
+import emitter from "tiny-emitter/instance";
 
 export default {
     methods: {
-        increment() {
+        increase() {
             if (this.current == this.max) {
                 return;
             }
@@ -15,7 +16,14 @@ export default {
             }
 
             this.current -= 1;
-        }
+        },
+        //TEST
+        simulateEmitIncrease()  {
+            emitter.emit("FragennummerIncrease")
+        },
+        simulateEmitDecrease()  {
+            emitter.emit("FragennummerDecrease")
+        },
     },
     data()  {
         return  {
@@ -29,6 +37,9 @@ export default {
     created() {
         this.max = this.$props.max;
         this.current = 1;
+
+        emitter.on("FragennummerIncrease", this.increase);
+        emitter.on("FragennummerDecrease", this.decrease);
     }
 }
 
@@ -37,6 +48,11 @@ export default {
 <template>
     <div>
         <p>Question {{ current }} of {{ max }}</p>
+
+        <!--TEST-->
+        <p>TEST BUTTONS</p>
+        <button @click="simulateEmitIncrease">Increase Emit</button>
+        <button @click="simulateEmitDecrease">Decrease Emit</button>
     </div>
 </template>
 
@@ -47,5 +63,6 @@ export default {
 p   {
     color: #828282;
     text-align: center;
+    font-family: 'Lato', sans-serif;
 }
 </style>
