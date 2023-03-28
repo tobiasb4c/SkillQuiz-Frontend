@@ -7,8 +7,8 @@ export default {
 </script>
 
 <template>
-    <div>
-        <div id="ans" v-for="antwort in antworten">
+    <div class="flex flex-col items-center">
+        <div class="answer" v-for="antwort in antworten">
             <label :for="antwort">{{ antwort }}</label>
             <input type="checkbox" class="accent-[#2FB4BC]" :value="antwort">
         </div>
@@ -45,7 +45,7 @@ input {
     border-radius: 5px;
 }
 
-#ans {
+.answer {
     box-sizing: border-box;
     height: 50px;
     width: 537px;

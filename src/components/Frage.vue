@@ -7,7 +7,7 @@ export default  {
 </script>
 
 <template>
-    <div class="flex justify-center">
+    <div class="flex flex-row justify-center">
         <h2>{{ text }}</h2>
     </div>
 </template>

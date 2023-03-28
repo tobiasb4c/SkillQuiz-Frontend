@@ -36,4 +36,6 @@ export default {
     <Timer :propMinute="1" :propSecond="5" />
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

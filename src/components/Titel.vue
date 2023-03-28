@@ -1,5 +1,5 @@
 <script>
-export default{
+export default  {
     props:{
         titel: String
     },
@@ -7,8 +7,8 @@ export default{
 </script>
 
 <template>
-    <div>
-    <h1 class="absolute flex items-center text-center text-gray-600">{{ titel }}</h1>
+    <div class="flex flex-row justify-center">
+        <h1>{{ titel }}</h1>
     </div>
 </template>
 
@@ -18,7 +18,8 @@ export default{
         font-family: 'Lato';
         font-style: normal;
         font-weight: 400;
-        font-size: 36px;
+        font-size: 18px;
         line-height: 22px;
+        color: #828282;
     }
 </style>
