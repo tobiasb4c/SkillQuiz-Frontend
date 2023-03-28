@@ -2,12 +2,13 @@
 
 import Beenden from './components/Beenden.vue'
 import Frage from './components/Frage.vue';
-
+import Fragennummer from './components/Fragennummer.vue';
 
 export default  {
     components: {
         Beenden,
-        Frage
+        Frage,
+        Fragennummer,
     },
     data() {
     return {
@@ -17,6 +18,7 @@ export default  {
 </script>
 
 <template>
+<Fragennummer max="10"/>
 <Frage text="Hallo Test Frage" class="w-full"/>
 <Beenden/>
 
