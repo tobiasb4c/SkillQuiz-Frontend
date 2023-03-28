@@ -1,4 +1,5 @@
 <script>
+import Titel from './components/Titel.vue'
 import Timer from './components/Timer.vue';
 import Beenden from './components/Beenden.vue';
 import Frage from './components/Frage.vue';
@@ -10,6 +11,7 @@ export default  {
         Frage,
         Fragennummer,
         Timer,
+        Titel,
     },
     data() {
     return {
@@ -19,7 +21,7 @@ export default  {
 </script>
 
 <template>
-
+    <Titel titel="Hallo Welt" />
     <Timer :propMinute="1" :propSecond="5"/>
   <Fragennummer :propMax="10"/>
 </template>
