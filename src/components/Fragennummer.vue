@@ -32,10 +32,10 @@ export default {
         }
     },
     props: {
-        max: Number,
+        propMax: Number,
     },
     created() {
-        this.max = this.$props.max;
+        this.max = this.$props.propMax;
         this.current = 1;
 
         emitter.on("FragennummerIncrease", this.increase);

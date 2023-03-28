@@ -18,7 +18,7 @@ export default  {
 </script>
 
 <template>
-  <Fragennummer max="10"/>
+  <Fragennummer :propMax="10"/>
 </template>
 
 <style scoped>
