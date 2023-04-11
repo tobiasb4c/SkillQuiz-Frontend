@@ -43,7 +43,7 @@ export default {
         <section class="white-background">
             <img src="./assets/typo3_logo.svg" class="logo" alt="Logo">
             <Titel titel="PHP Debugging" />
-            <Frage text="What is the meaning of life? The one anwer youpick will be important for your score - choose wisely."/>
+            <Frage text="What is the meaning of life? The one answer you pick will be important for your score - choose wisely."/>
         </section>
         
         <section class="white-background">
@@ -52,8 +52,7 @@ export default {
         </section>
 
         <section class="flex flex-row gap-1 flex-grow-1 my-3">
-            <Beenden />
-            <Beenden />
+            <Skip />
         </section>
 
         <section class="white-background mb-4">

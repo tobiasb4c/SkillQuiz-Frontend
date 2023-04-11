@@ -6,17 +6,21 @@ export default {
         
         increase() {
             if (this.current == this.max) {
+                emitter.emit("FragenummerCurrent", this.current, this.max);
                 return;
             }
 
             this.current += 1;
+            emitter.emit("FragenummerCurrent", this.current, this.max);
         },
         decrease()  {
             if (this.current == 1) {
+                emitter.emit("FragenummerCurrent", this.current, this.max);
                 return;
             }
 
             this.current -= 1;
+            emitter.emit("FragenummerCurrent", this.current, this.max);
         },
         //TEST
         /*
