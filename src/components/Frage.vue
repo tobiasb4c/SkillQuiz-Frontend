@@ -1,14 +1,14 @@
 <script>
 export default  {
     props: {
-        text: String,
-    }
+        fragen: String,
+    },
 }
 </script>
 
 <template>
     <div class="flex justify-center">
-        <h2>{{ text }}</h2>
+        <h2>{{ this.fragen[0] }}</h2>
     </div>
 </template>
 

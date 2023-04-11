@@ -7,13 +7,19 @@ export default  {
   },
   data() {
     return {
+        fragen:[
+            'Ah Wer bist du?',
+            'Woher Kommst du?',
+            'Was machst denn du?',
+            'WEr melkt die KUh?',
+        ]
     }
   },
 }
 </script>
 
 <template>
-<Frage text="Hallo Test Frage" class="w-full"/>
+<Frage :fragen="this.fragen" class="w-full"/>
 </template>
 
 <style scoped>
