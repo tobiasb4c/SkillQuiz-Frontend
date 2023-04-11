@@ -14,7 +14,6 @@
   "dependencies": {
     "tiny-emitter": "^2.1.0",
     "happy-dom": "^8.9.0",
-    "tiny-emitter": "^2.1.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {

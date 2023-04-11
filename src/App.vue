@@ -40,6 +40,7 @@ export default {
         <Fragennummer :propMax="10" />
         <AntwortMoeglichkeiten :antworten="testAntworten" />
         <Timer :propMinute="1" :propSecond="5" />
+        <Skip />
     </main>
 
 </template>
