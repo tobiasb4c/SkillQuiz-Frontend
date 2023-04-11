@@ -1,4 +1,5 @@
 <script>
+import emitter from "tiny-emitter/instance";
 export default  {
     props: {
         fragen: Array,
@@ -8,10 +9,6 @@ export default  {
             currentFragenummer: 1,
             maximal: 1
         }
-    },
-    props: {
-        antwortenpool: Array,
-        
     },
     methods:{
     EmitGetCurrentFragenummer(current, max) {
@@ -25,7 +22,7 @@ export default  {
     },
     computed: {
         currentFragen()  {
-            return this.antwortenpool[this.currentFragenummer - 1];
+            return this.fragen[this.currentFragenummer - 1];
         }
     }
 }
