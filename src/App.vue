@@ -6,12 +6,33 @@ export default{
     },
     data(){
         return{
-            testAntworten: [
-                '1.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
-                '2.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
-                '3.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
-                '4.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam'
+            testFrage[
+            [
+                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
+                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
+                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
+                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam'
             ]
+            [
+                'b',
+                'b',
+                'b',
+                'b'
+            ]
+            [
+                'c',
+                'c',
+                'c',
+                'c'
+            ]
+            [
+                'd',
+                'd',
+                'd',
+                'd'
+            ]
+            ]
+            
         }
     }
 }
