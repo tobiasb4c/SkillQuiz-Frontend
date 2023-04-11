@@ -1,14 +1,39 @@
 <script>
 export default  {
     props: {
-        fragen: String,
+        fragen: Array,
     },
+    data(){
+        return{
+            currentFragenummer: 1,
+            maximal: 1
+        }
+    },
+    props: {
+        antwortenpool: Array,
+        
+    },
+    methods:{
+    EmitGetCurrentFragenummer(current, max) {
+            this.currentFragenummer = current;
+            this.maximal = max;
+        },
+    },
+
+    mounted()   {
+        emitter.on("FragenummerCurrent", this.EmitGetCurrentFragenummer)
+    },
+    computed: {
+        currentFragen()  {
+            return this.antwortenpool[this.currentFragenummer - 1];
+        }
+    }
 }
 </script>
 
 <template>
     <div class="flex justify-center">
-        <h2>{{ this.fragen[0] }}</h2>
+        <h2>{{ this.currentFragen }}</h2>
     </div>
 </template>
 
