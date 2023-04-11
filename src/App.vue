@@ -1,28 +1,26 @@
 <script>
 
 import Beenden from './components/Beenden.vue'
-import Frage from './components/Frage.vue';
+import Frage from './components/Frage.vue'
 
 
-export default  {
-    components: {
-        Beenden,
-        Frage
-    },
-    data() {
+
+export default {
+  components: {
+    Beenden,
+    Frage,
+  },
+  data() {
     return {
+      openPopUp: false
     }
   }
 }
 </script>
 
 <template>
-<Frage text="Hallo Test Frage" class="w-full"/>
-<Beenden/>
-
-
+  <Frage text="Hallo Test Frage" class="w-full" />
+  <Beenden />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
