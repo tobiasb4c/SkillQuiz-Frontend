@@ -38,7 +38,7 @@ export default{
 </script>
 
 <template>
-    <AntwortMoeglichkeiten :antworten="testAntworten" />
+    <AntwortMoeglichkeiten :antwortenpool="testAntworten" />
 </template>
 
 <style scoped>
