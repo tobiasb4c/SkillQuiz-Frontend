@@ -21,11 +21,31 @@ export default {
 },
     data() {
         return {
-            testAntworten: [
-                "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle! ",
-                "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle! ",
-                "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle! ",
-                "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle! ",
+            testAntworten : [
+            [
+                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
+                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
+                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
+                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam'
+            ],
+            [
+                'b',
+                'b',
+                'b',
+                'b'
+            ],
+            [
+                'c',
+                'c',
+                'c',
+                'c'
+            ],
+            [
+                'd',
+                'd',
+                'd',
+                'd'
+            ]
             ],
         };
     },

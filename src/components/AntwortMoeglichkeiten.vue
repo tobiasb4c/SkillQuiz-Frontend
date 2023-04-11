@@ -1,14 +1,38 @@
 <script>
+import emitter from "tiny-emitter/instance";
 export default {
+
+    data(){
+        return{
+            currentFragenummer: 0,
+            maximal: 1
+        }
+    },
     props: {
-        antworten: Array
+        antwortenpool: Array,
+        
+    },
+    methods:{
+    EmitGetCurrentFragenummer(current, max) {
+            this.currentFragenummer = current;
+            this.maximal = max;
+        },
+    },
+
+    mounted()   {
+        emitter.on("FragenummerCurrent", this.EmitGetCurrentFragenummer)
+    },
+    computed: {
+        currentAntworten()  {
+            return this.antwortenpool[this.currentFragenummer];
+        }
     }
 }
 </script>
 
 <template>
     <div class="flex flex-col items-center">
-        <label v-for="antwort in antworten" class="answer flex flex-row justify-between items-center p-2">
+        <label v-for="antwort in currentAntworten" class="answer flex flex-row justify-between items-center p-2">
             <p class="w-11/12">{{ antwort }} </p>
             <input type="checkbox" class="accent-[#2FB4BC]" :value="antwort">
         </label>
