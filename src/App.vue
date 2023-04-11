@@ -6,25 +6,25 @@ export default{
     },
     data(){
         return{
-            testFrage[
+            testAntworten : [
             [
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam'
-            ]
+            ],
             [
                 'b',
                 'b',
                 'b',
                 'b'
-            ]
+            ],
             [
                 'c',
                 'c',
                 'c',
                 'c'
-            ]
+            ],
             [
                 'd',
                 'd',
@@ -32,7 +32,6 @@ export default{
                 'd'
             ]
             ]
-            
         }
     }
 }
