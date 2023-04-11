@@ -18,14 +18,6 @@ export default {
 
             this.current -= 1;
         },
-        //TEST
-        /*
-        simulateEmitIncrease()  {
-            emitter.emit("FragennummerIncrease")
-        },
-        simulateEmitDecrease()  {
-            emitter.emit("FragennummerDecrease")
-        },*/
     },
     data()  {
         return  {
