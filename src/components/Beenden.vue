@@ -19,11 +19,9 @@ export default {
 </script>
 
 <template>
-    <div>
-        <button class="m-2 py-1 px-10" @click="submitExam">
-            <label class="text-white">Submit Exam</label>
+        <button class="py-2 text-white w-full" @click="submitExam">
+            Submit Exam
         </button>
-    </div>
 </template>
 
 <style scoped>
@@ -33,13 +31,12 @@ export default {
 button {
     background-color: #2FB4BC;
     border-radius: 3px;
-}
 
-lable{
-    font-family: 'Lato', sans-serif;
-    font-style: normal;
-    font-weight: 400;
+    font-family: Lato;
     font-size: 24px;
+    font-weight: 400;
     line-height: 29px;
+    letter-spacing: 0em;
+    text-align: center;
 }
 </style>
