@@ -1,14 +1,36 @@
 <script>
+import emitter from "tiny-emitter/instance";
 export default  {
     props: {
-        text: String,
+        fragen: Array,
+    },
+    data(){
+        return{
+            currentFragenummer: 1,
+            maximal: 1
+        }
+    },
+    methods:{
+    EmitGetCurrentFragenummer(current, max) {
+            this.currentFragenummer = current;
+            this.maximal = max;
+        },
+    },
+
+    mounted()   {
+        emitter.on("FragenummerCurrent", this.EmitGetCurrentFragenummer)
+    },
+    computed: {
+        currentFragen()  {
+            return this.fragen[this.currentFragenummer - 1];
+        }
     }
 }
 </script>
 
 <template>
-    <div class="flex flex-row justify-center">
-        <h2>{{ text }}</h2>
+    <div class="flex justify-center">
+        <h2>{{ this.currentFragen }}</h2>
     </div>
 </template>
 

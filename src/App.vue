@@ -47,6 +47,12 @@ export default {
                 'd'
             ]
             ],
+            fragen:[
+            'Ah Wer bist du?',
+            'Woher Kommst du?',
+            'Was machst denn du?',
+            'WEr melkt die KUh?',
+        ]
         };
     },
 };
