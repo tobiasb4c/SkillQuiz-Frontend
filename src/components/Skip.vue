@@ -18,8 +18,8 @@ export default {
 
 <template>
     <div class="grid grid-cols-2 grid-rows-1 gap-1">
-        <button class="my-1 py-1 px-10 text-white" @click="EmitIncrease()">Previous</button>
-        <button class="my-1 py-1 px-10 text-white" @click="EmitDecrease()">Next</button>
+        <button class="my-1 py-1 px-10 text-white" @click="EmitDecrease()">Previous</button>
+        <button class="my-1 py-1 px-10 text-white" @click="EmitIncrease()">Next</button>
     </div>
 </template>
 
