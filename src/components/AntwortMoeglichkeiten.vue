@@ -49,6 +49,4 @@ input {
     border: 1px solid #2FB4BC;
     border-radius: 5px;
 }
-
-
 </style>
