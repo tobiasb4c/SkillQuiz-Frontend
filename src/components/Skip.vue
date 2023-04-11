@@ -4,11 +4,9 @@ export default {
     
     methods: {
         EmitIncrease()  {
-            console.log('emit + 1')
             emitter.emit("FragennummerIncrease")
         },
         EmitDecrease()  {
-            console.log('emit - 1')
             emitter.emit("FragennummerDecrease")
         },
     }
