@@ -4,7 +4,7 @@ export default {
 
     data(){
         return{
-            currentFragenummer: 0,
+            currentFragenummer: 1,
             maximal: 1
         }
     },
@@ -24,7 +24,7 @@ export default {
     },
     computed: {
         currentAntworten()  {
-            return this.antwortenpool[this.currentFragenummer];
+            return this.antwortenpool[this.currentFragenummer - 1];
         }
     }
 }

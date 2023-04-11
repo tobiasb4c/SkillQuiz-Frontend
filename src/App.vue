@@ -68,7 +68,7 @@ export default {
         
         <section class="white-background">
             <Fragennummer :propMax="12" />
-            <AntwortMoeglichkeiten :antworten="testAntworten" />
+            <AntwortMoeglichkeiten :antwortenpool="testAntworten" />
         </section>
 
         <section class="flex flex-row gap-1 flex-grow-1 my-3">
