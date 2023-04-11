@@ -5,7 +5,7 @@ import Timer from "./components/Timer.vue";
 import Beenden from "./components/Beenden.vue";
 import Frage from "./components/Frage.vue";
 import Fragennummer from "./components/Fragennummer.vue";
-
+import Skip from './components/Skip.vue';
 export default {
     components: {
         Beenden,
@@ -14,6 +14,7 @@ export default {
         Timer,
         Titel,
         AntwortMoeglichkeiten,
+        Skip,
     },
     data() {
         return {
@@ -26,6 +27,10 @@ export default {
         };
     },
 };
+
+
+
+
 </script>
 
 <template>
@@ -39,6 +44,4 @@ export default {
 
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
