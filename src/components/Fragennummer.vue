@@ -3,6 +3,7 @@ import emitter from "tiny-emitter/instance";
 
 export default {
     methods: {
+        
         increase() {
             if (this.current == this.max) {
                 return;
@@ -18,12 +19,13 @@ export default {
             this.current -= 1;
         },
         //TEST
+        /*
         simulateEmitIncrease()  {
             emitter.emit("FragennummerIncrease")
         },
         simulateEmitDecrease()  {
             emitter.emit("FragennummerDecrease")
-        },
+        },*/
     },
     data()  {
         return  {
@@ -49,11 +51,12 @@ export default {
     <div>
         <p>Question {{ current }} of {{ max }}</p>
 
-        <!--TEST-->
+        <!--TEST
         <p>TEST BUTTONS</p>
         <button @click="simulateEmitIncrease">Increase Emit</button>
         <br>    
         <button @click="simulateEmitDecrease">Decrease Emit</button>
+        -->
     </div>
 </template>
 
