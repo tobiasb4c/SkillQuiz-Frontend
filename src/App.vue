@@ -69,7 +69,7 @@ export default {
         <section class="white-background">
             <img src="./assets/typo3_logo.svg" class="logo" alt="Logo">
             <Titel titel="PHP Debugging" />
-            <Frage text="What is the meaning of life? The one answer you pick will be important for your score - choose wisely."/>
+            <Frage :fragen="this.fragen"/>
         </section>
         
         <section class="white-background">
