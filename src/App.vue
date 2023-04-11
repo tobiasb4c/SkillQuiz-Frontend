@@ -6,6 +6,7 @@ import Beenden from "./components/Beenden.vue";
 import Frage from "./components/Frage.vue";
 import Fragennummer from "./components/Fragennummer.vue";
 import ExamTitle from "./components/ExamTitle.vue";
+import Skip from './components/Skip.vue';
 
 export default {
     components: {
@@ -15,7 +16,8 @@ export default {
     Timer,
     Titel,
     AntwortMoeglichkeiten,
-    ExamTitle
+    ExamTitle,
+    Skip,
 },
     data() {
         return {
@@ -28,6 +30,10 @@ export default {
         };
     },
 };
+
+
+
+
 </script>
 
 <template>
