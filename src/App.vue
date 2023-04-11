@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template>
-    <main class="flex flex-col items-center gap-3">
+    <main class="flex flex-col items-center gap-3 w-full h-screen">
         <ExamTitle prop-titel-addon="Exam"/>
 
         <section>
@@ -43,9 +43,11 @@ export default {
         <section>
             <Fragennummer :propMax="12" />
             <AntwortMoeglichkeiten :antworten="testAntworten" />
-            <Timer :propMinute="12" :propSecond="0" />
         </section>
 
+        <section>
+            <Timer :propMinute="12" :propSecond="0" />
+        </section>
     </main>
 
 </template>
@@ -61,7 +63,8 @@ main    {
     background: #F2F2F2;
 }
 
-section {
+
+section, Timer {
     margin-left: 1rem;
 
     background: #FFFFFF;
@@ -71,5 +74,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    width: 91.666667%; /* 11/12 */
 }
 </style>
