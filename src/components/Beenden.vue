@@ -1,18 +1,9 @@
 
 <template>
-    <div v-show="submitted" class="center absolute w-full h-full">
-        <div class="bg-white">
-            <p>You will be awarded with a Micro-Certification for all skills for which you answered at least 2 of 3
-                questions correctly.
-            </p>
-            <p class="mt-4">Are you sure that you want to submit your exam answers now?
-            </p>
-            <PopUp />
-        </div>
-    </div>
+    <PopUp v-if="submitted"/>
 
-    <button class="m-2 py-1 px-10" @click="submitExam">
-        <label class="text-white">Submit Exam</label>
+    <button class="py-2 text-white w-full" @click="submitExam">
+        Submit Exam
     </button>
 </template>
 
@@ -22,23 +13,12 @@
 button {
     background-color: #2FB4BC;
     border-radius: 3px;
-}
 
-lable {
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
-    font-weight: 400;
     line-height: 29px;
-    letter-spacing: 0em;
-    text-align: center;
-}
-
-.center {
-    background-color: rgba(0, 0, 0, 0.1);
-    width: 100%;
-    position: absolute;
 }
 </style>
 
