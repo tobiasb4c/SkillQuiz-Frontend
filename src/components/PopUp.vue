@@ -37,6 +37,7 @@ export default {
         },
         submitExam(){
             console.log("submited")
+            emitter.emit('close')
         }
     }
 }

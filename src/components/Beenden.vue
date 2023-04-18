@@ -65,7 +65,6 @@ export default {
     },
     mounted() {
         emitter.on('close', this.closeExam)
-
     }
 }
 
