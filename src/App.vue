@@ -37,7 +37,6 @@ export default {
         async getQuizData(){
             const response = await fetch("./src/assets/dummyQuiz.json");
             const jsonData = await response.json();
-            console.log(jsonData);
             this.antworten = jsonData.antwortenpool
             this.fragen = jsonData.fragen
             this.quizName = jsonData.name

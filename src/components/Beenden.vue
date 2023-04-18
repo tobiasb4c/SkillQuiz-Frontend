@@ -1,18 +1,27 @@
 <script>
-
+import emitter from "tiny-emitter/instance";
 export default {
     methods: {
         submitExam() {
+            
+            console.log(this.eingabeJson)
             /*
             Quiz wird beendet
             */
            this.submitted = true
+        },
+        EmitGetEingabe(json){
+            this.eingabeJson = json;
         }
     },
     data()  {
         return  {
-            submitted: false
+            submitted: false,
+            eingabeJson: {}
         }
+    },
+    mounted(){
+        emitter.on('Eingabe', this.EmitGetEingabe)
     }
 }
 
