@@ -28,13 +28,9 @@ export default {
             quizGroesse: 0, 
             timeMin: 0,
             timeSec: 0,
-<<<<<<< Updated upstream
-            fetched: false,
-=======
 
             fetched: false,
             catched: false
->>>>>>> Stashed changes
         };
     },
     methods:{
