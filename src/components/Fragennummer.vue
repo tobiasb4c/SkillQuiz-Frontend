@@ -5,7 +5,7 @@ export default {
     methods: {
         
         increase() {
-            if (this.current == this.max) {
+            if (this.current >= this.max) {
                 emitter.emit("FragenummerCurrent", this.current, this.max);
                 return;
             }
@@ -14,7 +14,7 @@ export default {
             emitter.emit("FragenummerCurrent", this.current, this.max);
         },
         decrease()  {
-            if (this.current == 1) {
+            if (this.current <= 1) {
                 emitter.emit("FragenummerCurrent", this.current, this.max);
                 return;
             }

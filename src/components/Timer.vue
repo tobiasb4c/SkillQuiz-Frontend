@@ -22,12 +22,15 @@ export default {
     },
     methods: {
         countDown() {
-            this.time -= 1;
 
-            if (this.time == 0) {
+
+            if (this.time <= 0) {
+                this.time = 0
                 console.log("Beendet")
                 clearInterval(this.counter)
-            }
+                return
+            } 
+            this.time -= 1;
         }
     }
 }

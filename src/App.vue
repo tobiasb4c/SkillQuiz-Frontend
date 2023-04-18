@@ -7,7 +7,6 @@ import Frage from "./components/Frage.vue";
 import Fragennummer from "./components/Fragennummer.vue";
 import ExamTitle from "./components/ExamTitle.vue";
 import Skip from "./components/Skip.vue";
-import { onUpdated } from "vue";
 
 export default {
   components: {
@@ -29,11 +28,18 @@ export default {
             quizGroesse: 0, 
             timeMin: 0,
             timeSec: 0,
+<<<<<<< Updated upstream
             fetched: false,
+=======
+
+            fetched: false,
+            catched: false
+>>>>>>> Stashed changes
         };
     },
     methods:{
         async getQuizData(){
+            try{
             const response = await fetch("./src/assets/dummyQuiz.json");
             const jsonData = await response.json();
             this.antworten = jsonData.antwortenpool
@@ -43,6 +49,13 @@ export default {
             this.timeMin = jsonData.time.minute
             this.timeSec = jsonData.time.second
             this.fetched = true
+        } catch(error){
+            console.warn('Daten konnten nicht gefetched werden')
+            this.quizName = 'Daten konnten nicht gelesen werden'
+            this.fetched = true
+            this.catched = true
+            this.quizGroesse = 0
+        }
         }
     },
     async created() {
@@ -61,7 +74,7 @@ export default {
             <Titel :titel="this.quizName" />
             <Frage :fragen="this.fragen"/>
         </section>
-        
+
         <section class="white-background w-full py-2 flex flex-col gap-2">
             <Fragennummer :propMax="this.quizGroesse" />
             <AntwortMoeglichkeiten :antwortenpool="this.antworten" />
@@ -95,4 +108,5 @@ main {
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
+
 </style>
