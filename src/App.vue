@@ -75,6 +75,7 @@ export default {
         <section class="white-background w-full">
             <Timer :propMinute="12" :propSecond="0" />
         </section>
+        </div>
     </main>
 
 </template>
