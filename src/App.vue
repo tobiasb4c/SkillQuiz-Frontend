@@ -29,8 +29,7 @@ export default {
             quizGroesse: 0, 
             timeMin: 0,
             timeSec: 0,
-
-            fetched: false
+            fetched: false,
         };
     },
     methods:{
@@ -53,12 +52,12 @@ export default {
 </script>
 
 <template>
-    <main class="w-full" v-if="this.fetched">
+    <main class="w-full min-h-screen" v-if="this.fetched">
     <div class="flex flex-col items-center gap-4 px-4 py-4 mx-auto w-full sm:w-2/3">
       <ExamTitle prop-titel-addon="Exam" />
 
         <section class="white-background w-full flex flex-col items-center pb-4">
-            <img src="./assets/typo3_logo.svg" class="logo" alt="Logo">
+            <img src="./assets/typo3_logo.svg" class="logo object-contain" alt="Logo">
             <Titel :titel="this.quizName" />
             <Frage :fragen="this.fragen"/>
         </section>
@@ -82,8 +81,8 @@ export default {
 
 <style scoped>
 .logo {
-  width: 229.81px;
-  height: 96.52px;
+  width: auto;
+  height: 100px;
 }
 
 main {

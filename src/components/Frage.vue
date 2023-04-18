@@ -29,7 +29,7 @@ export default  {
 </script>
 
 <template>
-    <div class="flex justify-center">
+    <div class="flex justify-center px-4">
         <h2>{{ this.currentFragen }}</h2>
     </div>
 </template>
