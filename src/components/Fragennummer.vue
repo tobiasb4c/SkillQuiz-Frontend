@@ -40,7 +40,7 @@ export default {
     props: {
         propMax: Number,
     },
-    created() {
+    mounted() {
         this.max = this.$props.propMax;
         this.current = 1;
 
@@ -55,12 +55,6 @@ export default {
     <div>
         <p>Question {{ current }} of {{ max }}</p>
 
-        <!--TEST
-        <p>TEST BUTTONS</p>
-        <button @click="simulateEmitIncrease">Increase Emit</button>
-        <br>    
-        <button @click="simulateEmitDecrease">Decrease Emit</button>
-        -->
     </div>
 </template>
 

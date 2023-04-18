@@ -1,3 +1,31 @@
+<script>
+import emitter from "tiny-emitter/instance";
+export default {
+    methods: {
+        submitExam() {
+            
+            console.log(this.eingabeJson)
+            /*
+            Quiz wird beendet
+            */
+           this.submitted = true
+        },
+        EmitGetEingabe(json){
+            this.eingabeJson = json;
+        }
+    },
+    data()  {
+        return  {
+            submitted: false,
+            eingabeJson: {}
+        }
+    },
+    mounted(){
+        emitter.on('Eingabe', this.EmitGetEingabe)
+    }
+}
+
+</script>
 
 <template>
     <div v-show="submitted" class="center absolute w-full h-full">
