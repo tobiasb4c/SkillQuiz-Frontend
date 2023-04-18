@@ -7,6 +7,7 @@ import Frage from "./components/Frage.vue";
 import Fragennummer from "./components/Fragennummer.vue";
 import ExamTitle from "./components/ExamTitle.vue";
 import Skip from "./components/Skip.vue";
+import { onUpdated } from "vue";
 
 export default {
   components: {
@@ -18,56 +19,65 @@ export default {
     AntwortMoeglichkeiten,
     ExamTitle,
     Skip,
-  },
-  data() {
-    return {
-      testAntworten: [
-        [
-          "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
-          "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
-          "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
-          "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
-        ],
-        ["b", "b", "b", "b"],
-        ["c", "c", "c", "c"],
-        ["d", "d", "d", "d"],
-      ],
-      fragen: [
-        "Ah Wer bist du?",
-        "Woher Kommst du?",
-        "Was machst denn du?",
-        "WEr melkt die KUh?",
-      ],
-    };
-  },
+},
+    data() {
+        return {
+            quizData: {},
+            antworten : [],
+            fragen:[],
+            quizName: '',
+            quizGroesse: 0, 
+            timeMin: 0,
+            timeSec: 0,
+
+            fetched: false
+        };
+    },
+    methods:{
+        async getQuizData(){
+            const response = await fetch("./src/assets/dummyQuiz.json");
+            const jsonData = await response.json();
+            this.antworten = jsonData.antwortenpool
+            this.fragen = jsonData.fragen
+            this.quizName = jsonData.name
+            this.quizGroesse = this.antworten.length
+            this.timeMin = jsonData.time.minute
+            this.timeSec = jsonData.time.second
+            this.fetched = true
+        }
+    },
+    async created() {
+        await this.getQuizData()
+    }
 };
 </script>
 
 <template>
-  <main class="w-full">
+    <main class="w-full" v-if="this.fetched">
     <div class="flex flex-col items-center gap-4 px-4 py-4 mx-auto w-full sm:w-2/3">
       <ExamTitle prop-titel-addon="Exam" />
 
-      <section class="white-background w-full flex flex-col items-center pb-4">
-        <img src="./assets/typo3_logo.svg" class="logo" alt="Logo" />
-        <Titel titel="PHP Debugging" />
-        <Frage :fragen="this.fragen" />
-      </section>
-
-      <section class="white-background w-full py-2 flex flex-col gap-2">
-        <Fragennummer :propMax="12" />
-        <AntwortMoeglichkeiten :antwortenpool="testAntworten" />
-      </section>
+        <section class="white-background w-full flex flex-col items-center pb-4">
+            <img src="./assets/typo3_logo.svg" class="logo" alt="Logo">
+            <Titel :titel="this.quizName" />
+            <Frage :fragen="this.fragen"/>
+        </section>
+        
+        <section class="white-background w-full py-2 flex flex-col gap-2">
+            <Fragennummer :propMax="this.quizGroesse" />
+            <AntwortMoeglichkeiten :antwortenpool="this.antworten" />
+        </section>
 
       <section class="flex flex-row gap-1 my-3 w-full">
         <Skip />
       </section>
 
-      <section class="white-background w-full">
-        <Timer :propMinute="12" :propSecond="0" />
-      </section>
-    </div>
-  </main>
+        <section class="white-background w-full">
+            <Timer :propMinute="this.timeMin" :propSecond="this.timeSec" />
+        </section>
+        </div>
+    </main>
+
 </template>
 
 <style scoped>

@@ -2,40 +2,44 @@
 import emitter from "tiny-emitter/instance";
 export default {
 
-    data(){
-        return{
+    data() {
+        return {
             currentFragenummer: 1,
             maximal: 1,
             eingabe: [],
             eingabeArr: [],
-            
+            eingabeJson: {},
         }
     },
     props: {
         antwortenpool: Array,
-        
+
     },
-    methods:{
-    EmitGetCurrentFragenummer(current, max) {
-            this.eingabeArr[this.currentFragenummer - 1] = this.eingabe; // Eingabe speichern
-            
+    methods: {
+        EmitGetCurrentFragenummer(current, max) {
             this.currentFragenummer = current;
             this.maximal = max;
-            
-            if(this.eingabeArr[this.currentFragenummer - 1]){ //Wiederaufrufen der Beantworteteten Antworten
-                this.eingabe = this.eingabeArr[this.currentFragenummer -1];
-            } else{
-                this.eingabe = [];
-            }
-            
         },
     },
 
-    mounted()   {
+    mounted() {
         emitter.on("FragenummerCurrent", this.EmitGetCurrentFragenummer)
     },
+    updated() {
+        if (this.eingabeArr[this.currentFragenummer - 1]) { //Wiederaufrufen der Beantworteteten Antworten
+            this.eingabe = this.eingabeArr[this.currentFragenummer - 1];
+        } else {
+            this.eingabe = [];
+        }
+        this.eingabeArr[this.currentFragenummer - 1] = this.eingabe; // Eingabe speichern
+        
+
+        this.eingabeJson = JSON.stringify(Object.assign({}, this.eingabeArr));
+        emitter.emit('Eingabe', this.eingabeJson)
+    },
+
     computed: {
-        currentAntworten()  {
+        currentAntworten() {
             return this.antwortenpool[this.currentFragenummer - 1];
         }
     }
@@ -51,7 +55,7 @@ export default {
 
         <!--div class="answer flex flex-row align-baseline" v-for="antwort in antworten">
             
-        </div-->
+            </div-->
     </div>
 </template>
 

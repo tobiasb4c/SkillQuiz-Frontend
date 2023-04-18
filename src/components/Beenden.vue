@@ -1,4 +1,6 @@
 
+
+
 <template>
     <PopUp v-if="submitted"/>
 
@@ -34,18 +36,24 @@ export default {
     methods: {
         submitExam() {
             this.submitted = true
+            console.log(this.eingabeJson)
         },
         closeExam() {
             this.submitted = false
+        },
+        EmitGetEingabe(json){
+            this.eingabeJson = json;
         }
     },
     data() {
         return {
-            submitted: false
+            submitted: false,
+            eingabeJson: {}
         }
     },
     mounted() {
         emitter.on('close', this.closeExam)
+        emitter.on('Eingabe', this.EmitGetEingabe)
     }
 }
 

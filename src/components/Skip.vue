@@ -5,7 +5,7 @@ import Beenden from "./Beenden.vue";
 export default {
     data()  {
         return  {
-            currentFragenummer: 0,
+            currentFragenummer: 1,
             showBeenden: false,
         }
     },
