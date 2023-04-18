@@ -5,7 +5,10 @@ export default {
     data(){
         return{
             currentFragenummer: 1,
-            maximal: 1
+            maximal: 1,
+            eingabe: [],
+            eingabeArr: [],
+            
         }
     },
     props: {
@@ -14,8 +17,17 @@ export default {
     },
     methods:{
     EmitGetCurrentFragenummer(current, max) {
+            this.eingabeArr[this.currentFragenummer - 1] = this.eingabe; // Eingabe speichern
+            
             this.currentFragenummer = current;
             this.maximal = max;
+            
+            if(this.eingabeArr[this.currentFragenummer - 1]){ //Wiederaufrufen der Beantworteteten Antworten
+                this.eingabe = this.eingabeArr[this.currentFragenummer -1];
+            } else{
+                this.eingabe = [];
+            }
+            
         },
     },
 
@@ -32,9 +44,9 @@ export default {
 
 <template>
     <div class="flex flex-col items-center">
-        <label v-for="antwort in currentAntworten" class="answer flex flex-row justify-between items-center p-2">
-            <p class="w-11/12">{{ antwort }} </p>
-            <input type="checkbox" class="accent-[#2FB4BC]" :value="antwort">
+        <label v-for="antwort, key in currentAntworten" class="answer flex flex-row justify-between items-center p-2">
+            <p class="w-11/12">{{ antwort }}</p>
+            <input type="checkbox" class="accent-[#2FB4BC]" :value="antwort" v-model="eingabe[key]">
         </label>
 
         <!--div class="answer flex flex-row align-baseline" v-for="antwort in antworten">
