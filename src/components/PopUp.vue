@@ -24,8 +24,8 @@ export default {
             </p>
             <p class="">Are you sure that you want to submit your exam answers now?</p>
             <div class="flex flex-row gap-2">
-                <button class="text-white w-1/2 py-1" @click="cancel">Cancel</button>
-                <button @click="submitExam" class="text-white w-1/2">Submit Exam</button>
+                <button class="text-white w-1/2 py-1" @click="cancel">No</button>
+                <button @click="submitExam" class="text-white w-1/2">Yes</button>
             </div>
         </div>
     </div>
