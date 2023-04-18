@@ -73,7 +73,7 @@ export default {
       </section>
 
         <section class="white-background w-full">
-            <Timer :propMinute="12" :propSecond="0" />
+            <Timer :propMinute="this.timeMin" :propSecond="this.timeSec" />
         </section>
         </div>
     </main>
