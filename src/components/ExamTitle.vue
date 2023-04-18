@@ -15,9 +15,7 @@ export default {
 </script>
 
 <template>
-    <div>
-        <h1>Micro-Certification {{ propTitelAddon }}</h1>
-    </div>
+    <h1>Micro-Certification {{ propTitelAddon }}</h1>
 </template>
 
 <style scoped>
