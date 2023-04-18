@@ -2,40 +2,40 @@
 import emitter from "tiny-emitter/instance";
 export default {
 
-    data(){
-        return{
+    data() {
+        return {
             currentFragenummer: 1,
             maximal: 1,
             eingabe: [],
             eingabeArr: [],
-            
+
         }
     },
     props: {
         antwortenpool: Array,
-        
+
     },
-    methods:{
-    EmitGetCurrentFragenummer(current, max) {
+    methods: {
+        EmitGetCurrentFragenummer(current, max) {
             this.eingabeArr[this.currentFragenummer - 1] = this.eingabe; // Eingabe speichern
-            
+
             this.currentFragenummer = current;
             this.maximal = max;
-            
-            if(this.eingabeArr[this.currentFragenummer - 1]){ //Wiederaufrufen der Beantworteteten Antworten
-                this.eingabe = this.eingabeArr[this.currentFragenummer -1];
-            } else{
+
+            if (this.eingabeArr[this.currentFragenummer - 1]) { //Wiederaufrufen der Beantworteteten Antworten
+                this.eingabe = this.eingabeArr[this.currentFragenummer - 1];
+            } else {
                 this.eingabe = [];
             }
-            
+
         },
     },
 
-    mounted()   {
+    mounted() {
         emitter.on("FragenummerCurrent", this.EmitGetCurrentFragenummer)
     },
     computed: {
-        currentAntworten()  {
+        currentAntworten() {
             return this.antwortenpool[this.currentFragenummer - 1];
         }
     }
@@ -44,27 +44,66 @@ export default {
 
 <template>
     <div class="flex flex-col items-center">
-        <label v-for="antwort, key in currentAntworten" class="answer flex flex-row justify-between items-center p-2">
+        <label v-for="antwort, key in currentAntworten"
+            class="answer flex flex-row justify-between items-center p-2 ">
             <p class="w-11/12">{{ antwort }}</p>
-            <input type="checkbox" class="accent-[#2FB4BC]" :value="antwort" v-model="eingabe[key]">
+            <input type="checkbox" class="" :value="antwort" v-model="eingabe[key]">
+            <span class="checkmark"></span>
         </label>
 
         <!--div class="answer flex flex-row align-baseline" v-for="antwort in antworten">
             
-        </div-->
+            </div-->
     </div>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+
+
 .answer {
+    cursor: pointer;
     box-sizing: border-box;
     margin-bottom: 10px;
     background: #FFFFFF;
     border: 1px solid #E0E0E0;
     border-radius: 5px;
     width: 90%;
+}
+
+.answer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  height: 20px;
+  width: 20px;
+  background-color: #FFFFFF;
+  border: 1px solid;
+  border-radius: 5px;
+}
+.answer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.answer input:checked ~ .checkmark {
+  background-color: #2FB4BC;
+  border-color:#2FB4BC;
+}
+
+.checkmark:after {
+  content: "";
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
 }
 
 label {
