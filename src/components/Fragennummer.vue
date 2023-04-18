@@ -40,7 +40,7 @@ export default {
     props: {
         propMax: Number,
     },
-    created() {
+    mounted() {
         this.max = this.$props.propMax;
         this.current = 1;
 
