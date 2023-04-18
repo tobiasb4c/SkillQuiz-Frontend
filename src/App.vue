@@ -36,7 +36,7 @@ export default {
     methods:{
         async getQuizData(){
             try{
-            const response = await fetch("./src/assets/dummyQuiz.json");
+            const response = await fetch("./dummyQuiz.json");
             const jsonData = await response.json();
             this.antworten = jsonData.antwortenpool
             this.fragen = jsonData.fragen
