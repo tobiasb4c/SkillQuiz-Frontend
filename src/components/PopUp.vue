@@ -8,9 +8,12 @@ export default {
             emitter.emit('close')
         },
         submitExam(){
-            console.log("submited")
-            emitter.emit('close')
+            this.cancel()
+            emitter.emit('submit')
         }
+    },
+    beforeCreate(){
+        emitter.on('EmitSubmitExam', this.submitExam)
     }
 }
 

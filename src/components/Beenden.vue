@@ -1,10 +1,7 @@
-
-
-
 <template>
-    <PopUp v-if="submitted"/>
+    <PopUp v-if="submitted" />
 
-    <button class="py-2 text-white w-full" @click="submitExam">
+    <button class="py-2 text-white w-full" @click="this.submitted = true">
         Submit Exam
     </button>
 </template>
@@ -34,14 +31,10 @@ export default {
         PopUp,
     },
     methods: {
-        submitExam() {
-            this.submitted = true
-            console.log(this.eingabeJson)
-        },
         closeExam() {
             this.submitted = false
         },
-        EmitGetEingabe(json){
+        EmitGetEingabe(json) {
             this.eingabeJson = json;
         }
     },
@@ -54,7 +47,8 @@ export default {
     mounted() {
         emitter.on('close', this.closeExam)
         emitter.on('Eingabe', this.EmitGetEingabe)
-    }
+    },
+
 }
 
 </script>

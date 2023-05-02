@@ -1,4 +1,5 @@
 <script>
+import emitter from 'tiny-emitter/instance'
 
 export default {
     data() {
@@ -7,8 +8,8 @@ export default {
             counter: null,
         }
     },
-    computed:   {
-        countdownText()  {
+    computed: {
+        countdownText() {
             return (Math.floor(this.time / 60)) + " Minutes " + (this.time % 60) + " Seconds";
         }
     },
@@ -16,22 +17,21 @@ export default {
         propMinute: Number,
         propSecond: Number
     },
-    created()   {
+    created() {
         this.time = this.$props.propMinute * 60 + this.$props.propSecond;
         this.counter = setInterval(this.countDown, 1000)
     },
     methods: {
         countDown() {
-
-
             if (this.time <= 0) {
                 this.time = 0
-                console.log("Beendet")
+                console.log("Zeit abgelaufen")
+                emitter.emit('submit')
                 clearInterval(this.counter)
                 return
-            } 
+            }
             this.time -= 1;
-        }
+        },
     }
 }
 
@@ -52,8 +52,6 @@ export default {
 
 div {
     background-color: white;
-
-    
 }
 
 p:last-child {
