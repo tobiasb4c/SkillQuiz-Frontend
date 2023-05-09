@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template>
-    <h>{{ this.richtig }} von {{ this.fragneanzahl }} richtig</h>
+    <h1>{{ this.richtig }} von {{ this.fragneanzahl }} richtig</h1>
 </template>
 
 <style scoped>
