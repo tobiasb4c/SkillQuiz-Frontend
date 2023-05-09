@@ -28,7 +28,7 @@ export default {
 </template>
 
 <style scoped>
-h {
+h1 {
 
     font-size: 24px;
 
