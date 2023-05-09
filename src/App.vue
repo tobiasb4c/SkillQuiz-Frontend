@@ -7,6 +7,7 @@ import Frage from "./components/Frage.vue";
 import Fragennummer from "./components/Fragennummer.vue";
 import ExamTitle from "./components/ExamTitle.vue";
 import Skip from "./components/Skip.vue";
+import ResultPage from "./components/ResultPage.vue";
 import { TinyEmitter } from "tiny-emitter";
 import emitter from 'tiny-emitter/instance'
 
@@ -20,6 +21,7 @@ export default {
     AntwortMoeglichkeiten,
     ExamTitle,
     Skip,
+    ResultPage,
   },
   data() {
     return {
@@ -34,7 +36,8 @@ export default {
       timeSec: 0,
 
       fetched: false,
-      catched: false
+      catched: false,
+      closed: false,
     };
   },
   methods: {
@@ -64,6 +67,7 @@ export default {
     finalSubmitExam() {
       console.log('Final Submit')
       console.log(this.eingabeJson)
+      this.closed = true
     }
   },
   async created() {
@@ -77,7 +81,8 @@ export default {
 
 <template>
   <main class="w-full min-h-screen" v-if="this.fetched">
-    <div class="flex flex-col items-center gap-4 px-4 py-4 mx-auto w-full sm:w-2/3">
+    <div class="flex flex-col items-center gap-4 px-4 py-4 mx-auto w-full sm:w-2/3" v-if="!this.closed">
+       <!--Quiz-->
       <ExamTitle prop-titel-addon="Exam" />
 
       <section class="white-background w-full flex flex-col items-center pb-4">
@@ -97,8 +102,9 @@ export default {
 
       <section class="white-background w-full">
         <Timer :propMinute="this.timeMin" :propSecond="this.timeSec" />
-      </section>
+      </section>  
     </div>
+    <ResultPage :richtig="5" :fragneanzahl="this.quizGroesse" v-if="this.closed" />
   </main>
 </template>
 
