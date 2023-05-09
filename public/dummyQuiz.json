@@ -1,24 +1,46 @@
 {
-    "name": "PHP Debugging",
-    "time": {
-      "minute": 11,
-      "second": 23
-    },
-    "fragen": [
-      "What is the meaning of life? The one anwer you pick will be important for your score - choose wisely.",
-      "Wer bist du?",
-      "Was machst denn du?",
-      "Woher kommst du?",
-      "Wer melkt die Kuh?"
+  "name": "PHP Debugging",
+  "time": {
+    "minute": 11,
+    "second": 23
+  },
+  "fragen": [
+    "What is the meaning of life? The one anwer you pick will be important for your score - choose wisely.",
+    "Wer bist du?",
+    "Was machst denn du?",
+    "Woher kommst du?",
+    "Wer melkt die Kuh?"
+  ],
+  "antwortenpool": [
+    [
+      "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle! ",
+      "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle!",
+      "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle!",
+      "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle!"
     ],
-    "antwortenpool": [
-        ["Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle! ", 
-        "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle!",
-        "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle!",
-        "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle!"],
-        ["Tobi", "Fabi", "Nikola", "Sergej"],
-        ["Essen", "Trinken", "Schlafen", "Lernen"],
-        ["Wien", "Belgrad", "Berlin", "Paris"],
-        ["Tobi", "Fabi", "Nikola", "Sergej"]
+    [
+      "Tobi",
+      "Fabi",
+      "Nikola",
+      "Sergej"
+    ],
+    [
+      "Essen",
+      "Trinken",
+      "Schlafen",
+      "Lernen"
+    ],
+    [
+      "Wien",
+      "Belgrad",
+      "Berlin",
+      "Paris"
+    ],
+    [
+      "Tobi",
+      "Fabi",
+      "Nikola",
+      "Sergej"
     ]
-  }
+  ]
+}

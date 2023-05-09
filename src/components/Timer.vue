@@ -1,7 +1,8 @@
 <script>
-import emitter from 'tiny-emitter/instance'
+import emitter from "tiny-emitter/instance"
 
 export default {
+    name: "Timer-vue",
     data() {
         return {
             time: null,
@@ -10,7 +11,7 @@ export default {
     },
     computed: {
         countdownText() {
-            return (Math.floor(this.time / 60)) + " Minutes " + (this.time % 60) + " Seconds";
+            return (Math.floor(this.time / 60)) + " Minutes " + (this.time % 60) + " Seconds"
         }
     },
     props: {
@@ -18,7 +19,7 @@ export default {
         propSecond: Number
     },
     created() {
-        this.time = this.$props.propMinute * 60 + this.$props.propSecond;
+        this.time = this.$props.propMinute * 60 + this.$props.propSecond
         this.counter = setInterval(this.countDown, 1000)
     },
     methods: {
@@ -26,11 +27,11 @@ export default {
             if (this.time <= 0) {
                 this.time = 0
                 console.log("Zeit abgelaufen")
-                emitter.emit('submit')
+                emitter.emit("submit")
                 clearInterval(this.counter)
                 return
             }
-            this.time -= 1;
+            this.time -= 1
         },
     }
 }
@@ -47,19 +48,18 @@ export default {
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap"); 
 
 div {
     background-color: white;
 }
 
 p:last-child {
-    color: #828282;
+    color: #828282
 }
 
 p {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;

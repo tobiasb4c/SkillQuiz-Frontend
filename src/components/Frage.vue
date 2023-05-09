@@ -1,28 +1,29 @@
 <script>
-import emitter from "tiny-emitter/instance";
-export default  {
+import emitter from "tiny-emitter/instance"
+export default {
+    name: "Frage-vue",
     props: {
         fragen: Array,
     },
-    data(){
-        return{
+    data() {
+        return {
             currentFragenummer: 1,
             maximal: 1
         }
     },
-    methods:{
-    EmitGetCurrentFragenummer(current, max) {
-            this.currentFragenummer = current;
-            this.maximal = max;
+    methods: {
+        EmitGetCurrentFragenummer(current, max) {
+            this.currentFragenummer = current
+            this.maximal = max
         },
     },
 
-    mounted()   {
+    mounted() {
         emitter.on("FragenummerCurrent", this.EmitGetCurrentFragenummer)
     },
     computed: {
-        currentFragen()  {
-            return this.fragen[this.currentFragenummer - 1];
+        currentFragen() {
+            return this.fragen[this.currentFragenummer - 1]
         }
     }
 }
@@ -37,7 +38,7 @@ export default  {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-h2  {
+h2 {
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 400;

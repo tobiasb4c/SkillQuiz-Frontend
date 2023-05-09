@@ -1,19 +1,19 @@
 <script>
 
-import emitter from 'tiny-emitter/instance'
+import emitter from "tiny-emitter/instance"
 
 export default {
     methods: {
         cancel() {
-            emitter.emit('close')
+            emitter.emit("close")
         },
         submitExam(){
             this.cancel()
-            emitter.emit('submit')
+            emitter.emit("submit")
         }
     },
     beforeCreate(){
-        emitter.on('EmitSubmitExam', this.submitExam)
+        emitter.on("EmitSubmitExam", this.submitExam)
     }
 }
 
@@ -41,7 +41,7 @@ button {
 }
 
 p, button {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;

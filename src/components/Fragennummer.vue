@@ -1,26 +1,27 @@
 <script>
-import emitter from "tiny-emitter/instance";
+import emitter from "tiny-emitter/instance"
 
 export default {
+    name: "Fragenummer-vue",
     methods: {
-        
+
         increase() {
             if (this.current >= this.max) {
-                emitter.emit("FragenummerCurrent", this.current, this.max);
-                return;
+                emitter.emit("FragenummerCurrent", this.current, this.max)
+                return
             }
 
-            this.current += 1;
-            emitter.emit("FragenummerCurrent", this.current, this.max);
+            this.current += 1
+            emitter.emit("FragenummerCurrent", this.current, this.max)
         },
-        decrease()  {
+        decrease() {
             if (this.current <= 1) {
-                emitter.emit("FragenummerCurrent", this.current, this.max);
-                return;
+                emitter.emit("FragenummerCurrent", this.current, this.max)
+                return
             }
 
-            this.current -= 1;
-            emitter.emit("FragenummerCurrent", this.current, this.max);
+            this.current -= 1
+            emitter.emit("FragenummerCurrent", this.current, this.max)
         },
         //TEST
         /*
@@ -31,8 +32,8 @@ export default {
             emitter.emit("FragennummerDecrease")
         },*/
     },
-    data()  {
-        return  {
+    data() {
+        return {
             current: null,
             max: null
         }
@@ -41,11 +42,11 @@ export default {
         propMax: Number,
     },
     mounted() {
-        this.max = this.$props.propMax;
-        this.current = 1;
+        this.max = this.$props.propMax
+        this.current = 1
 
-        emitter.on("FragennummerIncrease", this.increase);
-        emitter.on("FragennummerDecrease", this.decrease);
+        emitter.on("FragennummerIncrease", this.increase)
+        emitter.on("FragennummerDecrease", this.decrease)
     }
 }
 
@@ -59,10 +60,9 @@ export default {
 </template>
 
 <style scoped>
-
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-p   {
+p {
     color: #828282;
     text-align: center;
     font-family: 'Lato', sans-serif;

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = {
     "env": {
         "browser": true,
@@ -18,7 +19,7 @@ module.exports = {
     ],
     "rules": {
         "indent": [
-            "error",
+            "off",
             4
         ],
         "linebreak-style": [
@@ -32,6 +33,6 @@ module.exports = {
         "semi": [
             "error",
             "never"
-        ]
+        ],
     }
 }

@@ -1,18 +1,15 @@
 <script>
-import AntwortMoeglichkeiten from "./components/AntwortMoeglichkeiten.vue";
-import Titel from "./components/Titel.vue";
-import Timer from "./components/Timer.vue";
-import Beenden from "./components/Beenden.vue";
-import Frage from "./components/Frage.vue";
-import Fragennummer from "./components/Fragennummer.vue";
-import ExamTitle from "./components/ExamTitle.vue";
-import Skip from "./components/Skip.vue";
-import { TinyEmitter } from "tiny-emitter";
-import emitter from 'tiny-emitter/instance'
+import AntwortMoeglichkeiten from "./components/AntwortMoeglichkeiten.vue"
+import Titel from "./components/Titel.vue"
+import Timer from "./components/Timer.vue"
+import Frage from "./components/Frage.vue"
+import Fragennummer from "./components/Fragennummer.vue"
+import ExamTitle from "./components/ExamTitle.vue"
+import Skip from "./components/Skip.vue"
+import emitter from "tiny-emitter/instance"
 
 export default {
-  components: {
-    Beenden,
+    components: {
     Frage,
     Fragennummer,
     Timer,
@@ -24,24 +21,23 @@ export default {
   data() {
     return {
       eingabeJson: {},
-
       quizData: {},
       antworten: [],
       fragen: [],
-      quizName: '',
+      quizName: "",
       quizGroesse: 0,
       timeMin: 0,
       timeSec: 0,
 
       fetched: false,
       catched: false
-    };
+    }
   },
   methods: {
     async getQuizData() {
       try {
-        const response = await fetch("./dummyQuiz.json");
-        const jsonData = await response.json();
+        const response = await fetch("./dummyQuiz.json")
+        const jsonData = await response.json()
         this.antworten = jsonData.antwortenpool
         this.fragen = jsonData.fragen
         this.quizName = jsonData.name
@@ -50,29 +46,29 @@ export default {
         this.timeSec = jsonData.time.second
         this.fetched = true
       } catch (error) {
-        console.warn('Daten konnten nicht gefetched werden')
-        this.quizName = 'Daten konnten nicht gelesen werden'
+        console.warn("Daten konnten nicht gefetched werden")
+        this.quizName = "Daten konnten nicht gelesen werden"
         this.fetched = true
         this.catched = true
         this.quizGroesse = 0
       }
     },
     EmitGetEingabe(json) {
-            this.eingabeJson = json;
-        },
+      this.eingabeJson = json
+    },
 
     finalSubmitExam() {
-      console.log('Final Submit')
+      console.log("Final Submit")
       console.log(this.eingabeJson)
     }
   },
   async created() {
     await this.getQuizData()
-    emitter.on('submit', this.finalSubmitExam)
-    emitter.on('Eingabe', this.EmitGetEingabe)
+    emitter.on("submit", this.finalSubmitExam)
+    emitter.on("Eingabe", this.EmitGetEingabe)
   },
 
-};
+}
 </script>
 
 <template>
@@ -109,7 +105,7 @@ export default {
 }
 
 main {
-  box-sizing: border-box;
+  box-sizing: border-box; 
   background: #f2f2f2;
 }
 

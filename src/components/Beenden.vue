@@ -23,10 +23,10 @@ button {
 
 <script>
 
-import emitter from 'tiny-emitter/instance'
-import PopUp from './PopUp.vue'
-
+import emitter from "tiny-emitter/instance"
+import PopUp from "./PopUp.vue"
 export default {
+    name: "Beenden-vue",
     components: {
         PopUp,
     },
@@ -35,7 +35,7 @@ export default {
             this.submitted = false
         },
         EmitGetEingabe(json) {
-            this.eingabeJson = json;
+            this.eingabeJson = json
         }
     },
     data() {
@@ -45,8 +45,8 @@ export default {
         }
     },
     mounted() {
-        emitter.on('close', this.closeExam)
-        emitter.on('Eingabe', this.EmitGetEingabe)
+        emitter.on("close", this.closeExam)
+        emitter.on("Eingabe", this.EmitGetEingabe)
     },
 
 }
