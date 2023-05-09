@@ -49,8 +49,15 @@ export default {
         this.fragen = jsonData.fragen
         this.quizName = jsonData.name
         this.quizGroesse = this.antworten.length
-        this.timeMin = jsonData.time.minute
-        this.timeSec = jsonData.time.second
+        
+        try {
+          this.timeMin = jsonData.time.minute
+          this.timeSec = jsonData.time.second
+        } catch (error) {
+          this.timeMin = null
+          this.timeSec = null
+        }
+
         this.fetched = true
       } catch (error) {
         console.warn('Daten konnten nicht gefetched werden')
@@ -58,11 +65,12 @@ export default {
         this.fetched = true
         this.catched = true
         this.quizGroesse = 0
+
       }
     },
     EmitGetEingabe(json) {
-            this.eingabeJson = json;
-        },
+      this.eingabeJson = json;
+    },
 
     finalSubmitExam() {
       console.log('Final Submit')
@@ -101,8 +109,8 @@ export default {
       </section>
 
       <section class="white-background w-full">
-        <Timer :propMinute="this.timeMin" :propSecond="this.timeSec" />
-      </section>  
+        <Timer :propMinute="this.timeMin" :propSecond="this.timeSec" :propAnzahlFragen="this.quizGroesse" />
+      </section>
     </div>
     <ResultPage :richtig="5" :fragneanzahl="this.quizGroesse" v-if="this.closed" />
   </main>

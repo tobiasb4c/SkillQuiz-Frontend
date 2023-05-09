@@ -15,11 +15,18 @@ export default {
     },
     props: {
         propMinute: Number,
-        propSecond: Number
+        propSecond: Number,
+        propAnzahlFragen: Number
     },
     created() {
-        this.time = this.$props.propMinute * 60 + this.$props.propSecond;
+        console.log(this.propMinute)
+        if (this.propMinute != null && this.propSecond != null) {
+            this.time = this.$props.propMinute * 60 + this.$props.propSecond;
+        } else {
+            this.time = this.propAnzahlFragen * 60;
+        }
         this.counter = setInterval(this.countDown, 1000)
+
     },
     methods: {
         countDown() {
