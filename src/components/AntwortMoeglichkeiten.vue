@@ -1,5 +1,5 @@
 <script>
-import emitter from "tiny-emitter/instance";
+import emitter from "tiny-emitter/instance"
 export default {
 
     data() {
@@ -17,8 +17,8 @@ export default {
     },
     methods: {
         EmitGetCurrentFragenummer(current, max) {
-            this.currentFragenummer = current;
-            this.maximal = max;
+            this.currentFragenummer = current
+            this.maximal = max
         },
     },
 
@@ -27,20 +27,20 @@ export default {
     },
     updated() {
         if (this.eingabeArr[this.currentFragenummer - 1]) { //Wiederaufrufen der Beantworteteten Antworten
-            this.eingabe = this.eingabeArr[this.currentFragenummer - 1];
+            this.eingabe = this.eingabeArr[this.currentFragenummer - 1]
         } else {
-            this.eingabe = [];
+            this.eingabe = []
         }
-        this.eingabeArr[this.currentFragenummer - 1] = this.eingabe; // Eingabe speichern
-        
+        this.eingabeArr[this.currentFragenummer - 1] = this.eingabe // Eingabe speichern
 
-        this.eingabeJson = JSON.stringify(Object.assign({}, this.eingabeArr));
-        emitter.emit('Eingabe', this.eingabeJson)
+
+        this.eingabeJson = JSON.stringify(Object.assign({}, this.eingabeArr))
+        emitter.emit("Eingabe", this.eingabeJson)
     },
 
     computed: {
         currentAntworten() {
-            return this.antwortenpool[this.currentFragenummer - 1];
+            return this.antwortenpool[this.currentFragenummer - 1]
         }
     }
 }
@@ -48,7 +48,8 @@ export default {
 
 <template>
     <div class="flex flex-col items-center">
-        <label v-for="antwort, key in currentAntworten" class="answer flex flex-row justify-between items-center p-2 ">
+        <label v-for="antwort, key in currentAntworten" v-bind:key="key"
+            class="answer flex flex-row justify-between items-center p-2 ">
             <p class="w-11/12">{{ antwort }}</p>
             <input type="checkbox" :value="antwort" v-model="eingabe[key]">
             <span class="checkmark"></span>
@@ -105,9 +106,10 @@ export default {
     display: none;
 }
 
-.answer input:checked ~ .checkmark:after {
+.answer input:checked~.checkmark:after {
     display: block;
 }
+
 .answer .checkmark:after {
     width: 6.5px;
     height: 14px;
