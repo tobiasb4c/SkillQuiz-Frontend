@@ -20,7 +20,6 @@ export default {
         propAnzahlFragen: Number
     },
     created() {
-        console.log(this.propMinute)
         if (this.propMinute != null && this.propSecond != null) {
             this.time = this.$props.propMinute * 60 + this.$props.propSecond;
         } else {
