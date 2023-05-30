@@ -1,8 +1,10 @@
 {
     "name": "PHP Debugging",
     "time": {
-      "minute": 11,
-      "second": 23
+      
+      "//minute": 11,
+      "//second": 23
+      
     },
     "fragen": [
       "What is the meaning of life? The one anwer you pick will be important for your score - choose wisely.",
