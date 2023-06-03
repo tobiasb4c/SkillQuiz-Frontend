@@ -1,5 +1,5 @@
 <script>
-import emitter from "tiny-emitter/instance"
+import emitter from 'tiny-emitter/instance';
 export default {
 
     data() {
@@ -9,6 +9,7 @@ export default {
             eingabe: [],
             eingabeArr: [],
             eingabeJson: {},
+            randomAntworten: [],
         }
     },
     props: {
@@ -19,11 +20,24 @@ export default {
         EmitGetCurrentFragenummer(current, max) {
             this.currentFragenummer = current
             this.maximal = max
-        },
-    },
 
+        },
+        randomizeAntwort() {
+            this.randomAntworten = this.antwortenpool
+            for (let antworten of this.randomAntworten) {
+                antworten = antworten.sort((a, b) => 0.5 - Math.random())
+            }
+        },
+        getCurrentAntworten() {
+            return this.randomAntworten[this.currentFragenummer - 1]
+        }
+    },
+    computed: {
+
+    },
     mounted() {
         emitter.on("FragenummerCurrent", this.EmitGetCurrentFragenummer)
+        this.randomizeAntwort()
     },
     updated() {
         if (this.eingabeArr[this.currentFragenummer - 1]) { //Wiederaufrufen der Beantworteteten Antworten
@@ -37,27 +51,21 @@ export default {
         this.eingabeJson = JSON.stringify(Object.assign({}, this.eingabeArr))
         emitter.emit("Eingabe", this.eingabeJson)
     },
-
-    computed: {
-        currentAntworten() {
-            return this.antwortenpool[this.currentFragenummer - 1]
-        }
-    }
 }
 </script>
 
 <template>
     <div class="flex flex-col items-center">
-        <label v-for="antwort, key in currentAntworten" v-bind:key="key"
+        <label v-for="antwort, index in getCurrentAntworten()" v-bind:key="index"
             class="answer flex flex-row justify-between items-center p-2 ">
-            <p class="w-11/12">{{ antwort }}</p>
-            <input type="checkbox" :value="antwort" v-model="eingabe[key]">
+            <p class="w-11/12">{{ index + 1 + ". " + antwort }}</p>
+            <input type="checkbox" :value="antwort" v-model="eingabe[index]">
             <span class="checkmark"></span>
         </label>
 
         <!--div class="answer flex flex-row align-baseline" v-for="antwort in antworten">
             
-            </div-->
+                            </div-->
     </div>
 </template>
 
