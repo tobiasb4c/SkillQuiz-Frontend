@@ -6,12 +6,12 @@ import Frage from "./components/Frage.vue";
 import Fragennummer from "./components/Fragennummer.vue";
 import ExamTitle from "./components/ExamTitle.vue";
 import Skip from "./components/Skip.vue";
-import emitter from 'tiny-emitter/instance';
+import emitter from "tiny-emitter/instance";
 import ResultPage from "./components/ResultPage.vue";
 import StartPage from "./components/StartPage.vue";
 
 export default {
-    components: {
+  components: {
     Frage,
     Fragennummer,
     Timer,
@@ -26,13 +26,14 @@ export default {
     return {
       eingabeJson: {},
       quizData: {},
+      resAns: [],
       antworten: [[]],
       fragen: [],
       quizName: "",
       quizGroesse: 0,
       timeMin: 0,
       timeSec: 0,
-      
+
       starting: true,
       fetched: false,
       catched: false,
@@ -40,85 +41,112 @@ export default {
     };
   },
   methods: {
-    start(obj, time, quizName){
-      if(this.timeMin == undefined && this.timeSec == undefined){
-        this.timeMin = time
+    start(obj, time, quizName) {
+      if (this.timeMin == undefined && this.timeSec == undefined) {
+        this.timeMin = time;
         this.timeSec = 0;
       }
-      console.log(quizName)
-      this.quizName = quizName
-    
-      this.starting = false
+      //console.log(quizName)
+      this.quizName = quizName;
+
+      this.starting = false;
     },
     async getQuizData() {
       try {
-        const response = await fetch("./src/assets/get.json") // Hier fetchen
-        const jsonData = await response.json()
+        const response = await fetch("https://typo3.ddev.site/quiz/?type=1452982642"); // Hier fetchen
+        const jsonData = await response.json();
         //console.log(jsonData)
-
+        this.quizData = jsonData;
 
         for (let index = 0; index < jsonData.length; index++) {
           const element = jsonData[index];
-          this.fragen.push(element.text)
-          console.log(element)
-          console.log(element.fragenAntworten)
-          this.antworten[index] = (element.fragenAntworten)
-        }
-        console.log(this.fragen)
-        console.log(this.antworten)
+          this.fragen.push(element.text);
 
-        this.quizName = 'Quizname'
-        this.quizGroesse = this.antworten.length
-        
+          this.antworten[index] = element.fragenAntworten;
+        }
+
+        this.quizName = "Quizname";
+        this.quizGroesse = this.antworten.length;
+
         //TIME FETCH From JSON
         try {
-          this.timeMin = jsonData.time.minute
-          this.timeSec = jsonData.time.second
+          this.timeMin = jsonData.time.minute;
+          this.timeSec = jsonData.time.second;
         } catch (error) {
-          this.timeMin = null
-          this.timeSec = null
+          this.timeMin = null;
+          this.timeSec = null;
         }
 
-        this.fetched = true
+        this.fetched = true;
       } catch (error) {
         console.log(error);
-        console.warn("Daten konnten nicht gefetched werden")
-        this.quizName = "Daten konnten nicht gelesen werden"
-        this.fetched = true
-        this.catched = true
-        this.quizGroesse = 0
+        console.warn("Daten konnten nicht gefetched werden");
+        this.quizName = "Daten konnten nicht gelesen werden";
+        this.fetched = true;
+        this.catched = true;
+        this.quizGroesse = 0;
       }
     },
-    EmitGetEingabe(json) {
+    EmitGetEingabe(json, ans) {
       this.eingabeJson = json;
+      this.resAns = ans;
     },
 
     finalSubmitExam() {
-      console.log("Final Submit")
-      console.log(this.eingabeJson)
-      this.closed = true
-    }
+      console.log("Final Submit");
+      console.log(this.eingabeJson);
+
+      let bol;
+      for (let index = 0; index < this.resAns.length; index++) {
+        for (let index2 = 0; index2 < this.resAns[index].length; index2++) {
+          if (this.eingabeJson[index][index2]) {
+            this.quizData[index].fragenAntworten[index2].ticked = true;
+          } else {
+            this.quizData[index].fragenAntworten[index2].ticked = false;
+          }
+        }
+      }
+      console.log(this.quizData);
+
+      fetch("https://typo3.ddev.site/quiz/?type=1452982642", {
+        method: "POST",
+        body: this.quizData,
+      })
+        .then(function (res) {
+          return res.json();
+        })
+        .then(function (data) {
+          console.log(JSON.stringify(data));
+        });
+      
+      this.closed = true;
+    },
   },
   async created() {
-    await this.getQuizData()
-    emitter.on("submit", this.finalSubmitExam)
-    emitter.on("Eingabe", this.EmitGetEingabe)
-    emitter.on('start', this.start)
+    await this.getQuizData();
+    emitter.on("submit", this.finalSubmitExam);
+    emitter.on("Eingabe", this.EmitGetEingabe);
+    emitter.on("start", this.start);
   },
-
-}
+};
 </script>
 
 <template>
-
-  <StartPage v-if="this.starting"/>
+  <StartPage v-if="this.starting" />
   <main class="w-full min-h-screen" v-if="this.fetched && !this.starting">
-    <div class="flex flex-col items-center gap-4 px-4 py-4 mx-auto w-full sm:w-2/3" v-if="!this.closed">
-       <!--Quiz-->
+    <div
+      class="flex flex-col items-center gap-4 px-4 py-4 mx-auto w-full sm:w-2/3"
+      v-if="!this.closed"
+    >
+      <!--Quiz-->
       <ExamTitle prop-titel-addon="Micro-Certification Exam" />
 
       <section class="white-background w-full flex flex-col items-center pb-4">
-        <img src="./assets/typo3_logo.svg" class="logo object-contain" alt="Logo">
+        <img
+          src="./assets/typo3_logo.svg"
+          class="logo object-contain"
+          alt="Logo"
+        />
         <Titel :titel="this.quizName" />
         <Frage :fragen="this.fragen" />
       </section>
@@ -133,10 +161,18 @@ export default {
       </section>
 
       <section class="white-background w-full">
-        <Timer :propMinute="this.timeMin" :propSecond="this.timeSec" :propAnzahlFragen="this.quizGroesse" />
+        <Timer
+          :propMinute="this.timeMin"
+          :propSecond="this.timeSec"
+          :propAnzahlFragen="this.quizGroesse"
+        />
       </section>
     </div>
-    <ResultPage :richtig="5" :fragneanzahl="this.quizGroesse" v-if="this.closed" />
+    <ResultPage
+      :richtig="5"
+      :fragneanzahl="this.quizGroesse"
+      v-if="this.closed"
+    />
   </main>
 </template>
 
@@ -147,7 +183,7 @@ export default {
 }
 
 main {
-  box-sizing: border-box; 
+  box-sizing: border-box;
   background: #f2f2f2;
 }
 

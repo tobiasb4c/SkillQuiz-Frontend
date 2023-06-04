@@ -28,7 +28,7 @@ export default {
             for (let index = 0; index < this.antwortenpool.length; index++) {
                 for (let index2 = 0; index2 < this.antwortenpool[index].length; index2++) {
                     const element = this.antwortenpool[index][index2].text;
-                    console.log('An Ans nummer ' + index + " + " + index2 + " = " + element )
+                    
                     ans[index][index2] = element
                 }
                 if((index + 1 ) < this.antwortenpool.length){
@@ -39,7 +39,7 @@ export default {
                 const element = ans[index];
                 ans[index] = ans[index].sort((a, b) => Math.random() - 0.5)
             }
-            console.log(ans);
+            
             
             this.randomAntworten = ans
         },
@@ -63,8 +63,8 @@ export default {
         this.eingabeArr[this.currentFragenummer - 1] = this.eingabe // Eingabe speichern
 
 
-        this.eingabeJson = JSON.stringify(Object.assign({}, this.eingabeArr))
-        emitter.emit("Eingabe", this.eingabeJson)
+        //this.eingabeJson = JSON.stringify(Object.assign({}, this.eingabeArr))
+        emitter.emit("Eingabe", this.eingabeArr, this.randomAntworten)
     },
 }
 </script>
