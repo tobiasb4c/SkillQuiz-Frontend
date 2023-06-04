@@ -8,6 +8,7 @@ import ExamTitle from "./components/ExamTitle.vue";
 import Skip from "./components/Skip.vue";
 import emitter from 'tiny-emitter/instance';
 import ResultPage from "./components/ResultPage.vue";
+import StartPage from "./components/StartPage.vue";
 
 export default {
     components: {
@@ -19,6 +20,7 @@ export default {
     ExamTitle,
     Skip,
     ResultPage,
+    StartPage,
   },
   data() {
     return {
@@ -30,13 +32,24 @@ export default {
       quizGroesse: 0,
       timeMin: 0,
       timeSec: 0,
-
+      
+      starting: true,
       fetched: false,
       catched: false,
       closed: false,
     };
   },
   methods: {
+    start(obj, time, quizName){
+      if(this.timeMin == undefined && this.timeSec == undefined){
+        this.timeMin = time
+        this.timeSec = 0;
+      }
+      console.log(quizName)
+      this.quizName = quizName
+    
+      this.starting = false
+    },
     async getQuizData() {
       try {
         const response = await fetch("./src/assets/get.json") // Hier fetchen
@@ -57,6 +70,7 @@ export default {
         this.quizName = 'Quizname'
         this.quizGroesse = this.antworten.length
         
+        //TIME FETCH From JSON
         try {
           this.timeMin = jsonData.time.minute
           this.timeSec = jsonData.time.second
@@ -89,16 +103,19 @@ export default {
     await this.getQuizData()
     emitter.on("submit", this.finalSubmitExam)
     emitter.on("Eingabe", this.EmitGetEingabe)
+    emitter.on('start', this.start)
   },
 
 }
 </script>
 
 <template>
-  <main class="w-full min-h-screen" v-if="this.fetched">
+
+  <StartPage v-if="this.starting"/>
+  <main class="w-full min-h-screen" v-if="this.fetched && !this.starting">
     <div class="flex flex-col items-center gap-4 px-4 py-4 mx-auto w-full sm:w-2/3" v-if="!this.closed">
        <!--Quiz-->
-      <ExamTitle prop-titel-addon="Exam" />
+      <ExamTitle prop-titel-addon="Micro-Certification Exam" />
 
       <section class="white-background w-full flex flex-col items-center pb-4">
         <img src="./assets/typo3_logo.svg" class="logo object-contain" alt="Logo">

@@ -7,24 +7,7 @@ import Titel from "./Titel.vue";
 export default {
     data() {
         return {
-            
-            result: {
-                skills: [
-                    {
-                        name: "PHP",
-                        absolviert: "true"
-                    },
-                    {
-                        name: "TYPO 3",
-                        absolviert: "false"
-                    },
-                    {
-                        name: "MYSQL",
-                        absolviert: "true"
-                    }
-                ]
-            },
-            skills: [],
+            skills:['PHP', 'TYPO', 'MYSQL'],
             eingabe: [],
             time: 0,
         }
@@ -35,31 +18,32 @@ export default {
     },
 
     methods: {
-        submit() {
+        submit(){
             let obj = {
 
-            } 
-            //Stop           
+            } // Wird dann emited
+            //Bei Quiz Start muss Zeit + Skills + geschickt
+            
+            // Der Name des Qiúiz wird aus allen Skill namen geschriebens
+            let quizName = this.skills[0]
+            
+            console.log(JSON.stringify(this.eingabe))
+            emitter.emit('start', obj, this.time, quizName) 
         },
-
     },
     updated() {
-
-        let counter = 0
-        for (let index = 0; index < this.eingabe.length; index++) {
-            if (this.eingabe[index]) {
-                counter++
+        
+            let counter = 0
+            for (let index = 0; index < this.eingabe.length; index++) {
+                if(this.eingabe[index]){
+                    counter++
+                }
             }
-        }
-        this.time = counter * 3 //3 Fragen pro SKill
+            this.time = counter * 3 //3 Fragen pro SKill
     },
     components: {
         ExamTitle,
         Titel,
-    },
-    created(){
-        console.log(this.result.skills)
-        this.skills = this.result.skills
     }
 }
 
@@ -82,14 +66,20 @@ export default {
                 <div class="flex flex-col items-center">
                     <label v-for="(skill, index) in this.skills"
                         class="answer flex flex-row justify-between items-center p-2">
-                        <p class="w-11/12">{{ skill.name }}</p>
-                        <input type="checkbox" :value="skill.name" v-model="skill.absolviert" disabled>
+                        <p class="w-11/12">{{ skill }}</p>
+                        <input type="checkbox" :value="skill" v-model="eingabe[index]">
                         <span class="checkmark"></span>
                     </label>
                 </div>
             </section>
-            <button class="py-2 text-white w-full btn" @click="this.submit"
-                >Add achieved Certifications to Profile</button>
+
+            <section class="white-background w-full py-2 flex flex-col gap-2">
+                <h2 class="flex flex-row justify-between items-center pt-2 ml-10 sub">Exam Time: {{ this.time }} Minutes</h2>
+                <p class="flex flex-row justify-between items-center ml-10 des">Cut Score: 2 of 3 correct answers per skill</p>
+            </section>
+
+
+            <button class="py-2 text-white w-full" :class="[this.time <= 0  ? 'bad' : 'good']" @click="this.submit" :disabled="this.time <= 0" >Start Micro-Certification</button>
         </div>
 
     </main>
@@ -97,15 +87,30 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-.btn {
-    background-color: #E04C5D;
+.des{
+    color: #828282;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28.8px;
+}
+.bad{
+    background-color:#828282;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 21.6px;
 }
-
+.good{
+    background-color:#E04C5D;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 21.6px;
+}
 .pic {
     width: auto;
     height: 12.5rem;
@@ -117,7 +122,7 @@ export default {
     border-radius: 5px;
 }
 
-.sub {
+.sub{
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
@@ -152,16 +157,16 @@ export default {
     width: 20px;
     background-color: #FFFFFF;
     border: 1px solid;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .answer:hover {
-    background-color: #FFFFFF;
+    background-color: #f3f3f3;
 }
 
 .answer input:checked~.checkmark {
-    background-color: #E04C5D;
-    border-color: #E04C5D;
+    background-color: #2FB4BC;
+    border-color: #2FB4BC;
 }
 
 .checkmark:after {
@@ -203,4 +208,5 @@ input {
     height: 20px;
     border: 1px solid #2FB4BC;
     border-radius: 5px;
-}</style>
+}
+</style>
