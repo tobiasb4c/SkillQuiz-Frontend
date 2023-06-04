@@ -53,7 +53,18 @@ export default {
     },
     async getQuizData() {
       try {
-        const response = await fetch("https://typo3.ddev.site/quiz/?type=1452982642"); // Hier fetchen
+        const response = 
+          await fetch("https://typo3.ddev.site/quiz/?type=1452982642", {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json',
+              'Origin': 'http://localhost:5173/'
+            }
+          });
+
+          console.log(response);
+    // Hier fetchen
         const jsonData = await response.json();
         //console.log(jsonData)
         this.quizData = jsonData;
