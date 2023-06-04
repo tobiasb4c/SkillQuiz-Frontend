@@ -1,5 +1,6 @@
 <script>
 import emitter from 'tiny-emitter/instance';
+import { pushScopeId } from 'vue';
 export default {
 
     data() {
@@ -23,10 +24,24 @@ export default {
 
         },
         randomizeAntwort() {
-            this.randomAntworten = this.antwortenpool
-            for (let antworten of this.randomAntworten) {
-                antworten = antworten.sort((a, b) => 0.5 - Math.random())
+            let ans = [[]]
+            for (let index = 0; index < this.antwortenpool.length; index++) {
+                for (let index2 = 0; index2 < this.antwortenpool[index].length; index2++) {
+                    const element = this.antwortenpool[index][index2].text;
+                    console.log('An Ans nummer ' + index + " + " + index2 + " = " + element )
+                    ans[index][index2] = element
+                }
+                if((index + 1 ) < this.antwortenpool.length){
+                    ans.push([]);
+                }
             }
+            for (let index = 0; index < ans.length; index++) {
+                const element = ans[index];
+                ans[index] = ans[index].sort((a, b) => Math.random() - 0.5)
+            }
+            console.log(ans);
+            
+            this.randomAntworten = ans
         },
         getCurrentAntworten() {
             return this.randomAntworten[this.currentFragenummer - 1]

@@ -1,0 +1,30 @@
+[
+    {
+        "fragenAntworten": [
+            {
+                "text": "Blödmann",
+                "uid": 5
+            },
+            {
+                "text": "Sussy Baka",
+                "uid": 6
+            }
+        ],
+        "text": "Eros?",
+        "uid": 3
+    },
+    {
+        "fragenAntworten": [
+            {
+                "text": "Köpek",
+                "uid": 7
+            },
+            {
+                "text": "Esel",
+                "uid": 8
+            }
+        ],
+        "text": "Nikola",
+        "uid": 4
+    }
+]

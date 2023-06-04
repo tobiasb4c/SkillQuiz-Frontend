@@ -24,7 +24,7 @@ export default {
     return {
       eingabeJson: {},
       quizData: {},
-      antworten: [],
+      antworten: [[]],
       fragen: [],
       quizName: "",
       quizGroesse: 0,
@@ -39,11 +39,22 @@ export default {
   methods: {
     async getQuizData() {
       try {
-        const response = await fetch("./dummyQuiz.json")
+        const response = await fetch("./src/assets/get.json") // Hier fetchen
         const jsonData = await response.json()
-        this.antworten = jsonData.antwortenpool
-        this.fragen = jsonData.fragen
-        this.quizName = jsonData.name
+        //console.log(jsonData)
+
+
+        for (let index = 0; index < jsonData.length; index++) {
+          const element = jsonData[index];
+          this.fragen.push(element.text)
+          console.log(element)
+          console.log(element.fragenAntworten)
+          this.antworten[index] = (element.fragenAntworten)
+        }
+        console.log(this.fragen)
+        console.log(this.antworten)
+
+        this.quizName = 'Quizname'
         this.quizGroesse = this.antworten.length
         
         try {
@@ -56,12 +67,12 @@ export default {
 
         this.fetched = true
       } catch (error) {
+        console.log(error);
         console.warn("Daten konnten nicht gefetched werden")
         this.quizName = "Daten konnten nicht gelesen werden"
         this.fetched = true
         this.catched = true
         this.quizGroesse = 0
-
       }
     },
     EmitGetEingabe(json) {
