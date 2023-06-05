@@ -1,24 +1,21 @@
 {
-    "name": "PHP Debugging",
-    "time": {
-      "minute": 11,
-      "second": 23
-    },
-    "fragen": [
-      "What is the meaning of life? The one anwer you pick will be important for your score - choose wisely.",
-      "Wer bist du?",
-      "Was machst denn du?",
-      "Woher kommst du?",
-      "Wer melkt die Kuh?"
-    ],
-    "antwortenpool": [
-        ["Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle! ", 
-        "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle!",
-        "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle!",
-        "Mine Turtle! Everybody do the flop! Mine Turtle! Mine Turtle! Everybody do the flop! Mine Turtle!"],
-        ["Tobi", "Fabi", "Nikola", "Sergej"],
-        ["Essen", "Trinken", "Schlafen", "Lernen"],
-        ["Wien", "Belgrad", "Berlin", "Paris"],
-        ["Tobi", "Fabi", "Nikola", "Sergej"]
-    ]
-  }
+  "name": "PHP Debugging",
+  "time": {
+    "minute": null,
+    "second": null
+  },
+  "fragen": [
+    "Welche Funktion wird verwendet, um eine Datei in PHP einzulesen?",
+    "Welches Zeichen wird verwendet, um den Beginn einer PHP-Code-Blöcks anzugeben?",
+    "Welche der folgenden Variablenarten kann in PHP nicht direkt global verwendet werden?",
+    "Welches Schlüsselwort wird in PHP verwendet, um eine Funktion zu definieren?",
+    "Wie kann man in PHP eine Datei umbenennen?"
+  ],
+  "antwortenpool": [
+    ["file_get_contents()", "fopen()", "readfile()", "include()"],
+    ["<?php", "<?", "<%", "<"],
+    ["$_GET", "$_POST", "$_SERVER", "$_SESSION"],
+    ["def", "func", "function", "defun"],
+    ["rename_file()", "move_file()", "change_file_name()", "rename()"]
+  ]
+}
