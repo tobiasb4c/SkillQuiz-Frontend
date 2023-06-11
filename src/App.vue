@@ -54,14 +54,7 @@ export default {
     async getQuizData() {
       try {
         const response = 
-          await fetch("https://typo3.ddev.site/quiz/?type=1452982642", {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-              'Content-Type': 'application/json',
-              'Origin': 'http://localhost:5173/'
-            }
-          });
+          await fetch("./src/assets/get.json");
 
           console.log(response);
     // Hier fetchen
@@ -152,9 +145,9 @@ export default {
       <!--Quiz-->
       <ExamTitle prop-titel-addon="Micro-Certification Exam" />
 
-      <section class="white-background w-full flex flex-col items-center pb-4">
+      <section class="white-background w-full flex flex-col items-center py-4">
         <img
-          src="./assets/typo3_logo.svg"
+          src="./assets/php_logo.svg"
           class="logo object-contain"
           alt="Logo"
         />

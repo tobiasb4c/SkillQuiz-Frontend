@@ -1,6 +1,6 @@
 <script>
 import emitter from 'tiny-emitter/instance';
-import { pushScopeId } from 'vue';
+
 export default {
 
     data() {

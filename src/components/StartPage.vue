@@ -3,7 +3,6 @@ import emitter from "tiny-emitter/instance";
 import ExamTitle from "./ExamTitle.vue";
 import Titel from "./Titel.vue";
 
-
 export default {
     data() {
         return {
@@ -21,7 +20,9 @@ export default {
         submit(){
             let obj = {
 
-            } // Wird dann emited
+            } 
+            
+            // Wird dann emited
             //Bei Quiz Start muss Zeit + Skills + geschickt
             
             // Der Name des Qiúiz wird aus allen Skill namen geschriebens
@@ -55,9 +56,9 @@ export default {
             <ExamTitle :propTitelAddon="'Micro-Certification Exam Overview'" />
 
             <section class="white-background w-full flex flex-col items-center pb-4 pt-4">
-                <img src="../assets/simon.png" class="pic object-contain" alt="Logo">
-                <ExamTitle :propTitelAddon="'Jonny Fünf'" />
-                <Titel :titel="'locker.bleiben@1220.at'" />
+                <img src="../assets/profile.png" class="pic object-contain rounded-full" alt="Logo">
+                <ExamTitle :propTitelAddon="'Max Mustermann'" />
+                <Titel :titel="'max.mustermann@htl.rennweg.at'" />
             </section>
 
             <section class="white-background w-full py-2 flex flex-col gap-2">
@@ -78,8 +79,7 @@ export default {
                 <p class="flex flex-row justify-between items-center ml-10 des">Cut Score: 2 of 3 correct answers per skill</p>
             </section>
 
-
-            <button class="py-2 text-white w-full" :class="[this.time <= 0  ? 'bad' : 'good']" @click="this.submit" :disabled="this.time <= 0" >Start Micro-Certification</button>
+            <button class="py-2 text-white w-full rounded-sm" :class="[this.time <= 0  ? 'bad' : 'good']" @click="this.submit" :disabled="this.time <= 0" >Start Micro-Certification</button>
         </div>
 
     </main>
