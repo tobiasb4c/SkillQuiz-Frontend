@@ -59,15 +59,14 @@ export default {
             mode: 'cors',
             headers: {
               'Content-Type': 'application/json',
-              'Origin': 'http://localhost:5173/'
             }
           });
 
           console.log(response);
-    // Hier fetchen
-        const jsonData = await response.json();
-        //console.log(jsonData)
-        this.quizData = jsonData;
+          // Hier fetchen
+          const jsonData = await response.json();
+          //console.log(jsonData)
+          this.quizData = jsonData;
 
         for (let index = 0; index < jsonData.length; index++) {
           const element = jsonData[index];
