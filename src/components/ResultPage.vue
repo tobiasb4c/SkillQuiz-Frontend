@@ -71,7 +71,7 @@ export default {
             <ExamTitle :propTitelAddon="'Micro-Certification Exam Overview'" />
 
             <section class="white-background w-full flex flex-col items-center pb-4 pt-4">
-                <img src="../assets/simon.png" class="pic object-contain" alt="Logo">
+                <img src="../assets/profile.png" class="pic object-contain" alt="Logo">
                 <ExamTitle :propTitelAddon="'Jonny Fünf'" />
                 <Titel :titel="'locker.bleiben@1220.at'" />
             </section>
