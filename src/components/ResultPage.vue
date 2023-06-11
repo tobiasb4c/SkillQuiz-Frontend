@@ -1,5 +1,4 @@
 <script>
-import emitter from "tiny-emitter/instance";
 import ExamTitle from "./ExamTitle.vue";
 import Titel from "./Titel.vue";
 
@@ -16,7 +15,7 @@ export default {
                     },
                     {
                         name: "TYPO 3",
-                        absolviert: "false"
+                        absolviert: "true"
                     },
                     {
                         name: "MYSQL",
@@ -57,9 +56,16 @@ export default {
         ExamTitle,
         Titel,
     },
-    created(){
-        console.log(this.result.skills)
+    mounted(){
         this.skills = this.result.skills
+
+        for (let skill of this.skills) {
+            if (this.$props.richtig >= 2/3) {
+                skill.absolviert = true
+            } else {
+                skill.absolviert = false
+            }
+        }
     }
 }
 
@@ -71,9 +77,9 @@ export default {
             <ExamTitle :propTitelAddon="'Micro-Certification Exam Overview'" />
 
             <section class="white-background w-full flex flex-col items-center pb-4 pt-4">
-                <img src="../assets/profile.png" class="pic object-contain" alt="Logo">
-                <ExamTitle :propTitelAddon="'Jonny Fünf'" />
-                <Titel :titel="'locker.bleiben@1220.at'" />
+                <img src="../assets/profile.png" class="pic object-contain rounded-full" alt="Logo">
+                <ExamTitle :propTitelAddon="'Max Mustermann'" />
+                <Titel :titel="'max.mustermann@htl.rennweg.at'" />
             </section>
 
             <section class="white-background w-full py-2 flex flex-col gap-2">
@@ -88,7 +94,7 @@ export default {
                     </label>
                 </div>
             </section>
-            <button class="py-2 text-white w-full btn" @click="this.submit"
+            <button class="py-2 text-white w-full btn rounded-sm" @click="this.submit"
                 >Add achieved Certifications to Profile</button>
         </div>
 

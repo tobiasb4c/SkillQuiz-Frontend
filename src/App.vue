@@ -34,6 +34,8 @@ export default {
       timeMin: 0,
       timeSec: 0,
 
+      correctness: 0,
+
       starting: true,
       fetched: false,
       catched: false,
@@ -102,11 +104,10 @@ export default {
       this.resAns = ans;
     },
 
-    finalSubmitExam() {
+    async finalSubmitExam() {
       console.log("Final Submit");
       console.log(this.eingabeJson);
 
-      let bol;
       for (let index = 0; index < this.resAns.length; index++) {
         for (let index2 = 0; index2 < this.resAns[index].length; index2++) {
           if (this.eingabeJson[index][index2]) {
@@ -116,25 +117,44 @@ export default {
           }
         }
       }
-      console.log(this.quizData);
 
-      fetch("https://typo3.ddev.site/quiz/?type=1452982642", {
+      console.log("QUIZDATA");
+      console.log(this.quizData);
+      console.log(JSON.stringify(this.quizData));
+
+      console.log();
+
+      let res = await fetch("https://typo3.ddev.site/quiz/?type=1452982642", {
         method: "POST",
-        body: this.quizData,
+        mode: 'cors',
+        body: JSON.stringify(this.quizData),
+        headers: {
+              'Content-Type': 'application/json',
+        }
       })
-        .then(function (res) {
-          return res.json();
-        })
-        .then(function (data) {
-          console.log(JSON.stringify(data));
-        });
+
+      let results =  await res.json()
+
+      let rightCount = 0
+
+      for (let result of results) {
+        if (result.geschafft) {
+          rightCount++
+        }
+      }
+
+      this.correctness = rightCount / results.length
+
+      console.log(results);
+
+      console.log(this.correctness);
       
       this.closed = true;
     },
   },
   async created() {
     await this.getQuizData();
-    emitter.on("submit", this.finalSubmitExam);
+    emitter.on("submit", await this.finalSubmitExam);
     emitter.on("Eingabe", this.EmitGetEingabe);
     emitter.on("start", this.start);
   },
@@ -153,7 +173,7 @@ export default {
 
       <section class="white-background w-full flex flex-col items-center pb-4">
         <img
-          src="./assets/typo3_logo.svg"
+          src="./assets/php_logo.svg"
           class="logo object-contain"
           alt="Logo"
         />
@@ -179,7 +199,7 @@ export default {
       </section>
     </div>
     <ResultPage
-      :richtig="5"
+      :richtig="this.correctness"
       :fragneanzahl="this.quizGroesse"
       v-if="this.closed"
     />
