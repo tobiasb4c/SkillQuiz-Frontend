@@ -60,7 +60,7 @@ export default {
         this.skills = this.result.skills
 
         for (let skill of this.skills) {
-            if (this.$props.richtig >= 2/3) {
+            if (this.$props.richtig >= 66/100) {
                 skill.absolviert = true
             } else {
                 skill.absolviert = false

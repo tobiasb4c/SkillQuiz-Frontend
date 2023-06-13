@@ -37,7 +37,8 @@ export default {
             }
             for (let index = 0; index < ans.length; index++) {
                 const element = ans[index];
-                ans[index] = ans[index].sort((a, b) => Math.random() - 0.5)
+                //ans[index] = ans[index].sort((a, b) => Math.random() - 0.5)
+                ans[index] = ans[index]
             }
             
             

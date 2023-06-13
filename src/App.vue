@@ -56,7 +56,7 @@ export default {
     async getQuizData() {
       try {
         const response = 
-          await fetch("https://typo3.ddev.site/quiz/?type=1452982642", {
+          await fetch("https://sq4ax.ddev.site/quiz/?type=1452982642&no_cache=1", {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -108,7 +108,10 @@ export default {
       console.log("Final Submit");
       console.log(this.eingabeJson);
 
+      console.log("TESTTESTEST");
+
       for (let index = 0; index < this.resAns.length; index++) {
+        console.log(this.eingabeJson);
         for (let index2 = 0; index2 < this.resAns[index].length; index2++) {
           if (this.eingabeJson[index][index2]) {
             this.quizData[index].fragenAntworten[index2].ticked = true;
@@ -124,7 +127,7 @@ export default {
 
       console.log();
 
-      let res = await fetch("https://typo3.ddev.site/quiz/?type=1452982642", {
+      let res = await fetch("https://sq4ax.ddev.site/quiz/?type=1452982642&no_cache=1", {
         method: "POST",
         mode: 'cors',
         body: JSON.stringify(this.quizData),
